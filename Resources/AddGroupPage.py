@@ -36,9 +36,9 @@ class AddGroupPage(unittest.TestCase):
         # at this point, the add_group_page is loaded
         self._verify_texts_on_add_group_page()
         self._verify_links_on_add_group_page()
-        self._verify_the_submit_button_on_add_group_page()
+        self._verify_the_buttons_on_add_group_page()
 
-    def _verify_the_submit_button_on_add_group_page(self):
+    def _verify_the_buttons_on_add_group_page(self):
         """
         Verifies the correctness of the value attribute in the following buttons:
             save_and_add_another_button
