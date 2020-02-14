@@ -1,11 +1,11 @@
 *** Settings ***
 Documentation       This is a test suite for admin login page
 Library             SeleniumLibrary
-Library             ../Resources/AdminLoginPage.py  ${browser}
-Library             ../Resources/AdminMainPage.py   ${browser}
-Library             ../Resources/AddGroupPage.py    ${browser}
-Library             ../Resources/GroupsPage.py      ${browser}
-Library             ../Resources/ConfirmGroupsDeletionsPage.py      ${browser}
+Library             ../Resources/AdminLoginPage.py
+Library             ../Resources/AdminMainPage.py
+Library             ../Resources/AddGroupPage.py
+Library             ../Resources/GroupsPage.py
+Library             ../Resources/ConfirmGroupsDeletionsPage.py
 Resource            ../Resources/CommonKeywords.robot
 Variables           ../Resources/CommonVariables.py
 Suite Setup         Suite Setup
@@ -21,7 +21,6 @@ Suite Setup
 
 Suite Teardown
     Close Browser
-
 
 *** Test Cases ***
 Login As An Admin

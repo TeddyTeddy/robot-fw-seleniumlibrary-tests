@@ -13,9 +13,8 @@ class AddGroupPage(unittest.TestCase):
     """
     ROBOT_LIBRARY_SCOPE = 'TEST SUITE'
 
-    def __init__(self, browser, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self._browser = browser
         self._loader = LibraryLoader.get_instance()  # singleton
 
     def verify_add_group_page(self):
