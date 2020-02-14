@@ -24,8 +24,7 @@ class AdminLoginPage(unittest.TestCase):
         login_button_text for correctness.
         :return: None
         """
-        self._loader.sl.open_browser(url=admin_login_page_url, browser=self._browser)
-        self._loader.sl.maximize_browser_window()
+        self._loader.sl.go_to(url=admin_login_page_url)
         self._loader.sl.wait_until_element_is_enabled(locator=locator['admin_login_page']['login_button'])
         self._verify_texts_on_admin_login_page()
 

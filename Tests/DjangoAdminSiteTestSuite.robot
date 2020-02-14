@@ -8,10 +8,20 @@ Library             ../Resources/GroupsPage.py      ${browser}
 Library             ../Resources/ConfirmGroupsDeletionsPage.py      ${browser}
 Resource            ../Resources/CommonKeywords.robot
 Variables           ../Resources/CommonVariables.py
+Suite Setup         Suite Setup
 Suite Teardown      Suite Teardown
 
 # To Run:
 # robot  --pythonpath Resources --noncritical failure-expected -d Results/ -v browser:'firefox' Tests/DjangoAdminSiteTestSuite.robot
+
+*** Keywords ***
+Suite Setup
+    Open Browser  browser=${browser}
+    Maximize Browser Window
+
+Suite Teardown
+    Close Browser
+
 
 *** Test Cases ***
 Login As An Admin

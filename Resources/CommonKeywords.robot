@@ -1,7 +1,4 @@
 *** Keywords ***
-Suite Teardown
-    Close Browser
-
 Login As Valid Admin User
     Enter Valid Admin Credentials and Submit  # goes to admin_main_page
     Verify Admin Main Page
