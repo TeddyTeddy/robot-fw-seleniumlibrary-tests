@@ -8,6 +8,7 @@ Library             ../Resources/GroupsPage.py
 Library             ../Resources/ConfirmGroupsDeletionsPage.py
 Resource            ../Resources/CommonKeywords.robot
 Variables           ../Resources/CommonVariables.py
+Variables           ../Resources/Credentials.py
 Suite Setup         Suite Setup
 Suite Teardown      Suite Teardown
 
@@ -25,7 +26,7 @@ Suite Teardown
 *** Test Cases ***
 Login As An Admin
     Go To Admin Login Page
-    Login As Valid Admin User   # opens admin_main_page
+    Login   ${CREDENTIALS.valid_admin.username}     ${CREDENTIALS.valid_admin.password}     # opens admin_main_page
 
 Create "Blog Editors" Group
     Click On Add Group Button   # opens add_group_page

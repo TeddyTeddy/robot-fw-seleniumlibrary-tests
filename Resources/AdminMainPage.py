@@ -2,7 +2,6 @@ import unittest
 from LibraryLoader import LibraryLoader
 from ExpectedTexts import expected
 from ExpectedLinks import links, expected_admin_main_page_url
-from Credentials import credentials
 from Locators import number_of_add_buttons, number_of_change_buttons, locator
 from robot.api import logger
 
@@ -20,7 +19,7 @@ class AdminMainPage(unittest.TestCase):
     def go_to_admin_main_page(self):
         self._loader.sl.go_to(expected_admin_main_page_url)
 
-    def verify_admin_main_page(self):
+    def verify_admin_main_page(self, username):
         """
         If the login attempt is successful, user is redirected to admin main page. This test checks the success
         of the login attempt by waiting for 'logout' element in the admin main page.
@@ -36,7 +35,7 @@ class AdminMainPage(unittest.TestCase):
         self.assertEqual(expected_admin_main_page_url, observed_admin_main_page_url)
 
         # admin_main_page is loaded at this point
-        self._verify_texts_on_admin_main_page()
+        self._verify_texts_on_admin_main_page(username)
         self._verify_links_on_admin_main_page()
 
     def _verify_links_on_admin_main_page(self):
@@ -105,7 +104,7 @@ class AdminMainPage(unittest.TestCase):
                                                           attribute='href',
                                                           expected=links['admin_main_page']['change_blog_post_link'])
 
-    def _verify_texts_on_admin_main_page(self):
+    def _verify_texts_on_admin_main_page(self, username):
         """
         Verify all the texts on admin_main_page on expected_admin_main_page_url
         :return: None
@@ -114,7 +113,8 @@ class AdminMainPage(unittest.TestCase):
                                                  expected=expected['admin_main_page']['main_title_text'])
 
         # user navigation bar on the upper right of the page
-        dynamic_user_tab_text = f"WELCOME, {credentials['valid_admin']['username'].upper()}. VIEW SITE / CHANGE PASSWORD / LOG OUT"
+        # TODO: move dynamic_user_tab_text to ExpectedTexts.py file
+        dynamic_user_tab_text = f"WELCOME, {username.upper()}. VIEW SITE / CHANGE PASSWORD / LOG OUT"
         self._loader.sl.element_text_should_be(locator=locator['admin_main_page']['welcome_user_x'],
                                                expected=dynamic_user_tab_text)
 

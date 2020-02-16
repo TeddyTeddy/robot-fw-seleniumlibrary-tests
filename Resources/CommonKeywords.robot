@@ -1,7 +1,8 @@
 *** Keywords ***
-Login As Valid Admin User
-    Enter Valid Admin Credentials and Submit  # goes to admin_main_page
-    Verify Admin Main Page
+Login
+    [Arguments]     ${username}     ${password}
+    Enter Credentials and Submit  ${username}     ${password}   # goes to admin_main_page
+    Verify Admin Main Page      ${username}
 
 Add Group With Permissions
     [Arguments]     ${group_name}       ${permissions}

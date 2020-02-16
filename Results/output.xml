@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.1.2 (Python 3.7.4 on linux)" generated="20200214 11:34:45.565" rpa="false">
+<robot generator="Robot 3.1.2 (Python 3.7.4 on linux)" generated="20200216 10:58:16.320" rpa="false">
 <suite id="s1" name="DjangoAdminSiteTestSuite" source="/home/hakan/Python/Robot/robot-fw-seleniumlibrary-tests/Tests/DjangoAdminSiteTestSuite.robot">
 <kw name="Suite Setup" type="setup">
 <kw name="Open Browser" library="SeleniumLibrary">
@@ -7,15 +7,15 @@
 <arguments>
 <arg>browser=${browser}</arg>
 </arguments>
-<msg timestamp="20200214 11:34:45.844" level="INFO">Opening browser 'firefox' to base url 'None'.</msg>
-<msg timestamp="20200214 11:34:45.845" level="INFO">Firefox driver log is always forced to to: /home/hakan/Python/Robot/robot-fw-seleniumlibrary-tests/Results/geckodriver-7.log</msg>
-<status status="PASS" starttime="20200214 11:34:45.844" endtime="20200214 11:34:51.792"></status>
+<msg timestamp="20200216 10:58:16.594" level="INFO">Opening browser 'firefox' to base url 'None'.</msg>
+<msg timestamp="20200216 10:58:16.595" level="INFO">Firefox driver log is always forced to to: /home/hakan/Python/Robot/robot-fw-seleniumlibrary-tests/Results/geckodriver-12.log</msg>
+<status status="PASS" starttime="20200216 10:58:16.593" endtime="20200216 10:58:21.889"></status>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20200214 11:34:51.792" endtime="20200214 11:34:52.098"></status>
+<status status="PASS" starttime="20200216 10:58:21.890" endtime="20200216 10:58:22.218"></status>
 </kw>
-<status status="PASS" starttime="20200214 11:34:45.843" endtime="20200214 11:34:52.099"></status>
+<status status="PASS" starttime="20200216 10:58:16.592" endtime="20200216 10:58:22.219"></status>
 </kw>
 <test id="s1-t1" name="Login As An Admin">
 <kw name="Go To Admin Login Page" library="AdminLoginPage">
@@ -23,26 +23,34 @@
 Once the login button is loaded, it checks title_text, username_text, password_text, and
 login_button_text for correctness.
 :return: None</doc>
-<msg timestamp="20200214 11:34:52.128" level="INFO">Opening url 'https://glacial-earth-31542.herokuapp.com/admin/login/?next=/admin/'</msg>
-<msg timestamp="20200214 11:34:58.345" level="INFO">Verifying element '//*[@id="site-name"]/a' contains exact text 'Django administration'.</msg>
-<msg timestamp="20200214 11:34:58.414" level="INFO">Verifying element '//*[@id="login-form"]/div[1]/label' contains exact text 'Username:'.</msg>
-<msg timestamp="20200214 11:34:58.431" level="INFO">Verifying element '//*[@id="login-form"]/div[2]/label' contains exact text 'Password:'.</msg>
-<msg timestamp="20200214 11:34:58.461" level="INFO">Element '//*[@id="login-form"]/div[3]/input' attribute 'value' contains value 'Log in'.</msg>
-<status status="PASS" starttime="20200214 11:34:52.103" endtime="20200214 11:34:58.461"></status>
+<msg timestamp="20200216 10:58:22.235" level="INFO">Opening url 'https://glacial-earth-31542.herokuapp.com/admin/login/?next=/admin/'</msg>
+<msg timestamp="20200216 10:58:24.722" level="INFO">Verifying element '//*[@id="site-name"]/a' contains exact text 'Django administration'.</msg>
+<msg timestamp="20200216 10:58:24.979" level="INFO">Verifying element '//*[@id="login-form"]/div[1]/label' contains exact text 'Username:'.</msg>
+<msg timestamp="20200216 10:58:25.100" level="INFO">Verifying element '//*[@id="login-form"]/div[2]/label' contains exact text 'Password:'.</msg>
+<msg timestamp="20200216 10:58:25.260" level="INFO">Element '//*[@id="login-form"]/div[3]/input' attribute 'value' contains value 'Log in'.</msg>
+<status status="PASS" starttime="20200216 10:58:22.221" endtime="20200216 10:58:25.261"></status>
 </kw>
-<kw name="Login As Valid Admin User" library="CommonKeywords">
-<kw name="Enter Valid Admin Credentials And Submit" library="AdminLoginPage">
+<kw name="Login" library="CommonKeywords">
+<arguments>
+<arg>${CREDENTIALS.valid_admin.username}</arg>
+<arg>${CREDENTIALS.valid_admin.password}</arg>
+</arguments>
+<kw name="Enter Credentials And Submit" library="AdminLoginPage">
 <doc>Logins as admin user via admin login page. If the login attempt is successful, user is redirected to
 admin main page. This test checks the success of the login attempt by waiting for 'logout' element
 in the main page. If the element is enabled, then the url of of the redirected page is checked against
 expected_admin_main_page_url. Then the test verifies all the texts and the links on the admin main page
 :return: None</doc>
-<msg timestamp="20200214 11:34:58.462" level="INFO">Typing text 'hakan' into text field '//*[@id="id_username"]'.</msg>
-<msg timestamp="20200214 11:34:58.505" level="INFO">Typing password into text field '//*[@id="id_password"]'.</msg>
-<msg timestamp="20200214 11:34:58.529" level="INFO">Temporally setting log level to: NONE</msg>
-<msg timestamp="20200214 11:34:58.548" level="INFO">Log level changed from NONE to INFO.</msg>
-<msg timestamp="20200214 11:34:58.548" level="INFO">Clicking element '//*[@id="login-form"]/div[3]/input'.</msg>
-<status status="PASS" starttime="20200214 11:34:58.462" endtime="20200214 11:35:02.149"></status>
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20200216 10:58:25.267" level="INFO">Typing text 'hakan' into text field '//*[@id="id_username"]'.</msg>
+<msg timestamp="20200216 10:58:25.369" level="INFO">Typing password into text field '//*[@id="id_password"]'.</msg>
+<msg timestamp="20200216 10:58:25.391" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20200216 10:58:25.423" level="INFO">Log level changed from NONE to INFO.</msg>
+<msg timestamp="20200216 10:58:25.423" level="INFO">Clicking element '//*[@id="login-form"]/div[3]/input'.</msg>
+<status status="PASS" starttime="20200216 10:58:25.265" endtime="20200216 10:58:27.114"></status>
 </kw>
 <kw name="Verify Admin Main Page" library="AdminMainPage">
 <doc>If the login attempt is successful, user is redirected to admin main page. This test checks the success
@@ -50,50 +58,53 @@ of the login attempt by waiting for 'logout' element in the admin main page.
 If the element is enabled, then the url of of the redirected page is checked against
 expected_admin_main_page_url. Then the test verifies all the texts and the links on the admin main page
 :return: None</doc>
-<msg timestamp="20200214 11:35:02.247" level="INFO">Verifying element '//*[@id="site-name"]/a' contains exact text 'Django administration'.</msg>
-<msg timestamp="20200214 11:35:02.270" level="INFO">Verifying element '//*[@id="user-tools"]' contains exact text 'WELCOME, HAKAN. VIEW SITE / CHANGE PASSWORD / LOG OUT'.</msg>
-<msg timestamp="20200214 11:35:02.294" level="INFO">Verifying element '//*[@id="user-tools"]/a[1]' contains exact text 'VIEW SITE'.</msg>
-<msg timestamp="20200214 11:35:02.306" level="INFO">Verifying element '//*[@id="user-tools"]/a[2]' contains exact text 'CHANGE PASSWORD'.</msg>
-<msg timestamp="20200214 11:35:02.319" level="INFO">Verifying element '//*[@id="user-tools"]/a[3]' contains exact text 'LOG OUT'.</msg>
-<msg timestamp="20200214 11:35:02.332" level="INFO">Verifying element '//*[@id="content"]/h1' contains exact text 'Site administration'.</msg>
-<msg timestamp="20200214 11:35:02.344" level="INFO">Verifying element '//*[@id="content-main"]/div[1]/table/caption/a' contains exact text 'AUTHENTICATION AND AUTHORIZATION'.</msg>
-<msg timestamp="20200214 11:35:02.357" level="INFO">Verifying element '//*[@id="content-main"]/div[1]/table/tbody/tr[1]/th/a' contains exact text 'Groups'.</msg>
-<msg timestamp="20200214 11:35:02.372" level="INFO">Verifying element '//*[@id="content-main"]/div[1]/table/tbody/tr[2]/th/a' contains exact text 'Users'.</msg>
-<msg timestamp="20200214 11:35:02.386" level="INFO">Verifying element '//*[@id="content-main"]/div[2]/table/caption/a' contains exact text 'POSTINGS'.</msg>
-<msg timestamp="20200214 11:35:02.399" level="INFO">Verifying element '//*[@id="content-main"]/div[2]/table/tbody/tr/th/a' contains exact text 'Blog posts'.</msg>
-<msg timestamp="20200214 11:35:02.473" level="INFO">looking for Add buttons with XPATH = //div[@id="content-main"]//a[contains(., 'Add')]</msg>
-<msg timestamp="20200214 11:35:02.492" level="INFO">Current page contains 3 element(s).</msg>
-<msg timestamp="20200214 11:35:02.493" level="INFO">looking for Change buttons with XPATH = //div[@id="content-main"]//a[contains(., 'Change')]</msg>
-<msg timestamp="20200214 11:35:02.509" level="INFO">Current page contains 3 element(s).</msg>
-<msg timestamp="20200214 11:35:02.509" level="INFO">Verifying element '//div[@id="recent-actions-module"]/h2' contains exact text 'Recent actions'.</msg>
-<msg timestamp="20200214 11:35:02.525" level="INFO">Verifying element '//*[@id="recent-actions-module"]/h3' contains exact text 'My actions'.</msg>
-<msg timestamp="20200214 11:35:02.562" level="INFO">Element '//*[@id="site-name"]/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/'.</msg>
-<msg timestamp="20200214 11:35:02.606" level="INFO">Element '//*[@id="user-tools"]/a[1]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/'.</msg>
-<msg timestamp="20200214 11:35:02.657" level="INFO">Element '//*[@id="user-tools"]/a[2]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/password_change/'.</msg>
-<msg timestamp="20200214 11:35:02.706" level="INFO">Element '//*[@id="user-tools"]/a[3]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/logout/'.</msg>
-<msg timestamp="20200214 11:35:02.761" level="INFO">Element '//*[@id="content-main"]/div[1]/table/caption/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/'.</msg>
-<msg timestamp="20200214 11:35:02.810" level="INFO">Element '//*[@id="content-main"]/div[1]/table/tbody/tr[1]/th/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/group/'.</msg>
-<msg timestamp="20200214 11:35:02.843" level="INFO">Element '//*[@id="content-main"]/div[1]/table/tbody/tr[2]/th/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/user/'.</msg>
-<msg timestamp="20200214 11:35:02.870" level="INFO">Element '//*[@id="content-main"]/div[1]/table/tbody/tr[1]/td[1]/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/group/add/'.</msg>
-<msg timestamp="20200214 11:35:02.901" level="INFO">Element '//*[@id="content-main"]/div[1]/table/tbody/tr[1]/td[2]/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/group/'.</msg>
-<msg timestamp="20200214 11:35:02.923" level="INFO">Element '//*[@id="content-main"]/div[1]/table/tbody/tr[2]/td[1]/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/user/add/'.</msg>
-<msg timestamp="20200214 11:35:02.937" level="INFO">Element '//*[@id="content-main"]/div[1]/table/tbody/tr[2]/td[2]/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/user/'.</msg>
-<msg timestamp="20200214 11:35:02.950" level="INFO">Element '//*[@id="content-main"]/div[2]/table/caption/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/postings/'.</msg>
-<msg timestamp="20200214 11:35:02.964" level="INFO">Element '//*[@id="content-main"]/div[2]/table/tbody/tr/th/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/postings/blogpost/'.</msg>
-<msg timestamp="20200214 11:35:02.978" level="INFO">Element '//*[@id="content-main"]/div[2]/table/tbody/tr/td[1]/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/postings/blogpost/add/'.</msg>
-<msg timestamp="20200214 11:35:02.992" level="INFO">Element '//*[@id="content-main"]/div[2]/table/tbody/tr/td[2]/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/postings/blogpost/'.</msg>
-<status status="PASS" starttime="20200214 11:35:02.149" endtime="20200214 11:35:02.993"></status>
+<arguments>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20200216 10:58:27.199" level="INFO">Verifying element '//*[@id="site-name"]/a' contains exact text 'Django administration'.</msg>
+<msg timestamp="20200216 10:58:27.247" level="INFO">Verifying element '//*[@id="user-tools"]' contains exact text 'WELCOME, HAKAN. VIEW SITE / CHANGE PASSWORD / LOG OUT'.</msg>
+<msg timestamp="20200216 10:58:27.277" level="INFO">Verifying element '//*[@id="user-tools"]/a[1]' contains exact text 'VIEW SITE'.</msg>
+<msg timestamp="20200216 10:58:27.296" level="INFO">Verifying element '//*[@id="user-tools"]/a[2]' contains exact text 'CHANGE PASSWORD'.</msg>
+<msg timestamp="20200216 10:58:27.316" level="INFO">Verifying element '//*[@id="user-tools"]/a[3]' contains exact text 'LOG OUT'.</msg>
+<msg timestamp="20200216 10:58:27.334" level="INFO">Verifying element '//*[@id="content"]/h1' contains exact text 'Site administration'.</msg>
+<msg timestamp="20200216 10:58:27.359" level="INFO">Verifying element '//*[@id="content-main"]/div[1]/table/caption/a' contains exact text 'AUTHENTICATION AND AUTHORIZATION'.</msg>
+<msg timestamp="20200216 10:58:27.378" level="INFO">Verifying element '//*[@id="content-main"]/div[1]/table/tbody/tr[1]/th/a' contains exact text 'Groups'.</msg>
+<msg timestamp="20200216 10:58:27.396" level="INFO">Verifying element '//*[@id="content-main"]/div[1]/table/tbody/tr[2]/th/a' contains exact text 'Users'.</msg>
+<msg timestamp="20200216 10:58:27.409" level="INFO">Verifying element '//*[@id="content-main"]/div[2]/table/caption/a' contains exact text 'POSTINGS'.</msg>
+<msg timestamp="20200216 10:58:27.419" level="INFO">Verifying element '//*[@id="content-main"]/div[2]/table/tbody/tr/th/a' contains exact text 'Blog posts'.</msg>
+<msg timestamp="20200216 10:58:27.435" level="INFO">looking for Add buttons with XPATH = //div[@id="content-main"]//a[contains(., 'Add')]</msg>
+<msg timestamp="20200216 10:58:27.440" level="INFO">Current page contains 3 element(s).</msg>
+<msg timestamp="20200216 10:58:27.440" level="INFO">looking for Change buttons with XPATH = //div[@id="content-main"]//a[contains(., 'Change')]</msg>
+<msg timestamp="20200216 10:58:27.444" level="INFO">Current page contains 3 element(s).</msg>
+<msg timestamp="20200216 10:58:27.444" level="INFO">Verifying element '//div[@id="recent-actions-module"]/h2' contains exact text 'Recent actions'.</msg>
+<msg timestamp="20200216 10:58:27.458" level="INFO">Verifying element '//*[@id="recent-actions-module"]/h3' contains exact text 'My actions'.</msg>
+<msg timestamp="20200216 10:58:27.495" level="INFO">Element '//*[@id="site-name"]/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/'.</msg>
+<msg timestamp="20200216 10:58:27.514" level="INFO">Element '//*[@id="user-tools"]/a[1]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/'.</msg>
+<msg timestamp="20200216 10:58:27.548" level="INFO">Element '//*[@id="user-tools"]/a[2]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/password_change/'.</msg>
+<msg timestamp="20200216 10:58:27.583" level="INFO">Element '//*[@id="user-tools"]/a[3]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/logout/'.</msg>
+<msg timestamp="20200216 10:58:27.617" level="INFO">Element '//*[@id="content-main"]/div[1]/table/caption/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/'.</msg>
+<msg timestamp="20200216 10:58:27.666" level="INFO">Element '//*[@id="content-main"]/div[1]/table/tbody/tr[1]/th/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/group/'.</msg>
+<msg timestamp="20200216 10:58:27.708" level="INFO">Element '//*[@id="content-main"]/div[1]/table/tbody/tr[2]/th/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/user/'.</msg>
+<msg timestamp="20200216 10:58:27.754" level="INFO">Element '//*[@id="content-main"]/div[1]/table/tbody/tr[1]/td[1]/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/group/add/'.</msg>
+<msg timestamp="20200216 10:58:27.795" level="INFO">Element '//*[@id="content-main"]/div[1]/table/tbody/tr[1]/td[2]/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/group/'.</msg>
+<msg timestamp="20200216 10:58:27.842" level="INFO">Element '//*[@id="content-main"]/div[1]/table/tbody/tr[2]/td[1]/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/user/add/'.</msg>
+<msg timestamp="20200216 10:58:27.876" level="INFO">Element '//*[@id="content-main"]/div[1]/table/tbody/tr[2]/td[2]/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/user/'.</msg>
+<msg timestamp="20200216 10:58:27.932" level="INFO">Element '//*[@id="content-main"]/div[2]/table/caption/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/postings/'.</msg>
+<msg timestamp="20200216 10:58:27.972" level="INFO">Element '//*[@id="content-main"]/div[2]/table/tbody/tr/th/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/postings/blogpost/'.</msg>
+<msg timestamp="20200216 10:58:28.015" level="INFO">Element '//*[@id="content-main"]/div[2]/table/tbody/tr/td[1]/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/postings/blogpost/add/'.</msg>
+<msg timestamp="20200216 10:58:28.054" level="INFO">Element '//*[@id="content-main"]/div[2]/table/tbody/tr/td[2]/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/postings/blogpost/'.</msg>
+<status status="PASS" starttime="20200216 10:58:27.115" endtime="20200216 10:58:28.054"></status>
 </kw>
-<status status="PASS" starttime="20200214 11:34:58.461" endtime="20200214 11:35:02.993"></status>
+<status status="PASS" starttime="20200216 10:58:25.262" endtime="20200216 10:58:28.055"></status>
 </kw>
-<status status="PASS" starttime="20200214 11:34:52.099" endtime="20200214 11:35:02.993" critical="yes"></status>
+<status status="PASS" starttime="20200216 10:58:22.219" endtime="20200216 10:58:28.055" critical="yes"></status>
 </test>
 <test id="s1-t2" name="Create &quot;Blog Editors&quot; Group">
 <kw name="Click On Add Group Button" library="AdminLoginPage">
 <doc>In admin_main_page, it clicks on add_group button, once redirected to the add_group_page
 :return None</doc>
-<msg timestamp="20200214 11:35:02.995" level="INFO">Clicking link '//*[@id="content-main"]/div[1]/table/tbody/tr[1]/td[1]/a'.</msg>
-<status status="PASS" starttime="20200214 11:35:02.995" endtime="20200214 11:35:09.476"></status>
+<msg timestamp="20200216 10:58:28.057" level="INFO">Clicking link '//*[@id="content-main"]/div[1]/table/tbody/tr[1]/td[1]/a'.</msg>
+<status status="PASS" starttime="20200216 10:58:28.057" endtime="20200216 10:58:29.665"></status>
 </kw>
 <kw name="Verify Add Group Page" library="AddGroupPage">
 <doc>In admin_main_page, it clicks on add_group button, once redirected to the add_group_page.
@@ -101,12 +112,12 @@ Once redirection occurs, this method checks for element title to be visible on a
 Then it verifies that current url is expected_add_group_page_url
 It then verifies the page's texts and the links for correctness
 :return: None</doc>
-<msg timestamp="20200214 11:35:09.621" level="INFO">Verifying element '//*[@id="container"]/div[2]' contains exact text 'Home › Authentication and Authorization › Groups › Add group'.</msg>
-<msg timestamp="20200214 11:35:09.681" level="INFO">Verifying element '//*[@id="content"]/h1' contains exact text 'Add group'.</msg>
-<msg timestamp="20200214 11:35:09.701" level="INFO">Verifying element '//*[@id="group_form"]/div/fieldset/div[1]/div/label' contains exact text 'Name:'.</msg>
-<msg timestamp="20200214 11:35:09.717" level="INFO">Verifying element '//*[@id="group_form"]/div/fieldset/div[2]/div/label' contains exact text 'Permissions:'.</msg>
-<msg timestamp="20200214 11:35:09.752" level="INFO">Verifying element '//*[@id="group_form"]/div/fieldset/div[2]/div/div[1]/div/div[1]/h2' contains exact text 'Available permissions'.</msg>
-<msg timestamp="20200214 11:35:09.778" level="INFO">Verifying element '//*[@id="id_permissions_from"]' contains exact text 'admin | log entry | Can add log entry
+<msg timestamp="20200216 10:58:29.883" level="INFO">Verifying element '//*[@id="container"]/div[2]' contains exact text 'Home › Authentication and Authorization › Groups › Add group'.</msg>
+<msg timestamp="20200216 10:58:29.909" level="INFO">Verifying element '//*[@id="content"]/h1' contains exact text 'Add group'.</msg>
+<msg timestamp="20200216 10:58:29.922" level="INFO">Verifying element '//*[@id="group_form"]/div/fieldset/div[1]/div/label' contains exact text 'Name:'.</msg>
+<msg timestamp="20200216 10:58:29.940" level="INFO">Verifying element '//*[@id="group_form"]/div/fieldset/div[2]/div/label' contains exact text 'Permissions:'.</msg>
+<msg timestamp="20200216 10:58:29.971" level="INFO">Verifying element '//*[@id="group_form"]/div/fieldset/div[2]/div/div[1]/div/div[1]/h2' contains exact text 'Available permissions'.</msg>
+<msg timestamp="20200216 10:58:29.989" level="INFO">Verifying element '//*[@id="id_permissions_from"]' contains exact text 'admin | log entry | Can add log entry
 admin | log entry | Can change log entry
 admin | log entry | Can delete log entry
 auth | group | Can add group
@@ -127,22 +138,22 @@ postings | blog post | Can delete blog post
 sessions | session | Can add session
 sessions | session | Can change session
 sessions | session | Can delete session'.</msg>
-<msg timestamp="20200214 11:35:09.853" level="INFO">Element '//*[@id="group_form"]/div/fieldset/div[2]/div/div[1]/div/div[1]/h2/span' attribute 'title' contains value 'This is the list of available permissions. You may choose some by selecting them in the box below and then clicking the "Choose" arrow between the two boxes.'.</msg>
-<msg timestamp="20200214 11:35:09.854" level="INFO">Verifying element '//*[@id="id_permissions_add_all_link"]' contains exact text 'Choose all'.</msg>
-<msg timestamp="20200214 11:35:09.865" level="INFO">Verifying element '//*[@id="group_form"]/div/fieldset/div[2]/div/div[2]' contains exact text 'Hold down "Control", or "Command" on a Mac, to select more than one.'.</msg>
-<msg timestamp="20200214 11:35:09.877" level="INFO">Verifying element '//*[@id="group_form"]/div/fieldset/div[2]/div/div[1]/div/div[2]/h2' contains exact text 'Chosen permissions'.</msg>
-<msg timestamp="20200214 11:35:09.905" level="INFO">Element '//*[@id="group_form"]/div/fieldset/div[2]/div/div[1]/div/div[2]/h2/span' attribute 'title' contains value 'This is the list of chosen permissions. You may remove some by selecting them in the box below and then clicking the "Remove" arrow between the two boxes.'.</msg>
-<msg timestamp="20200214 11:35:09.905" level="INFO">Verifying element '//*[@id="id_permissions_to"]' contains exact text ''.</msg>
-<msg timestamp="20200214 11:35:09.931" level="INFO">Verifying element '//*[@id="id_permissions_remove_all_link"]' contains exact text 'Remove all'.</msg>
-<msg timestamp="20200214 11:35:09.982" level="INFO">Element '//*[@id="container"]/div[2]/a[1]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/'.</msg>
-<msg timestamp="20200214 11:35:09.996" level="INFO">Element '//*[@id="container"]/div[2]/a[2]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/'.</msg>
-<msg timestamp="20200214 11:35:10.015" level="INFO">Element '//*[@id="container"]/div[2]/a[3]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/group/'.</msg>
-<msg timestamp="20200214 11:35:10.031" level="INFO">Element '//*[@id="id_permissions_add_all_link"]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/group/add/#'.</msg>
-<msg timestamp="20200214 11:35:10.079" level="INFO">Element '//*[@id="id_permissions_remove_all_link"]' attribute 'class' contains value 'selector-clearall'.</msg>
-<msg timestamp="20200214 11:35:10.093" level="INFO">Element '//*[@id="group_form"]/div/div/input[2]' attribute 'value' contains value 'Save and add another'.</msg>
-<msg timestamp="20200214 11:35:10.106" level="INFO">Element '//*[@id="group_form"]/div/div/input[3]' attribute 'value' contains value 'Save and continue editing'.</msg>
-<msg timestamp="20200214 11:35:10.120" level="INFO">Element '//*[@id="group_form"]/div/div/input[1]' attribute 'value' contains value 'Save'.</msg>
-<status status="PASS" starttime="20200214 11:35:09.476" endtime="20200214 11:35:10.120"></status>
+<msg timestamp="20200216 10:58:30.075" level="INFO">Element '//*[@id="group_form"]/div/fieldset/div[2]/div/div[1]/div/div[1]/h2/span' attribute 'title' contains value 'This is the list of available permissions. You may choose some by selecting them in the box below and then clicking the "Choose" arrow between the two boxes.'.</msg>
+<msg timestamp="20200216 10:58:30.075" level="INFO">Verifying element '//*[@id="id_permissions_add_all_link"]' contains exact text 'Choose all'.</msg>
+<msg timestamp="20200216 10:58:30.094" level="INFO">Verifying element '//*[@id="group_form"]/div/fieldset/div[2]/div/div[2]' contains exact text 'Hold down "Control", or "Command" on a Mac, to select more than one.'.</msg>
+<msg timestamp="20200216 10:58:30.131" level="INFO">Verifying element '//*[@id="group_form"]/div/fieldset/div[2]/div/div[1]/div/div[2]/h2' contains exact text 'Chosen permissions'.</msg>
+<msg timestamp="20200216 10:58:30.195" level="INFO">Element '//*[@id="group_form"]/div/fieldset/div[2]/div/div[1]/div/div[2]/h2/span' attribute 'title' contains value 'This is the list of chosen permissions. You may remove some by selecting them in the box below and then clicking the "Remove" arrow between the two boxes.'.</msg>
+<msg timestamp="20200216 10:58:30.195" level="INFO">Verifying element '//*[@id="id_permissions_to"]' contains exact text ''.</msg>
+<msg timestamp="20200216 10:58:30.218" level="INFO">Verifying element '//*[@id="id_permissions_remove_all_link"]' contains exact text 'Remove all'.</msg>
+<msg timestamp="20200216 10:58:30.266" level="INFO">Element '//*[@id="container"]/div[2]/a[1]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/'.</msg>
+<msg timestamp="20200216 10:58:30.279" level="INFO">Element '//*[@id="container"]/div[2]/a[2]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/'.</msg>
+<msg timestamp="20200216 10:58:30.295" level="INFO">Element '//*[@id="container"]/div[2]/a[3]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/group/'.</msg>
+<msg timestamp="20200216 10:58:30.307" level="INFO">Element '//*[@id="id_permissions_add_all_link"]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/group/add/#'.</msg>
+<msg timestamp="20200216 10:58:30.355" level="INFO">Element '//*[@id="id_permissions_remove_all_link"]' attribute 'class' contains value 'selector-clearall'.</msg>
+<msg timestamp="20200216 10:58:30.369" level="INFO">Element '//*[@id="group_form"]/div/div/input[2]' attribute 'value' contains value 'Save and add another'.</msg>
+<msg timestamp="20200216 10:58:30.391" level="INFO">Element '//*[@id="group_form"]/div/div/input[3]' attribute 'value' contains value 'Save and continue editing'.</msg>
+<msg timestamp="20200216 10:58:30.428" level="INFO">Element '//*[@id="group_form"]/div/div/input[1]' attribute 'value' contains value 'Save'.</msg>
+<status status="PASS" starttime="20200216 10:58:29.666" endtime="20200216 10:58:30.428"></status>
 </kw>
 <kw name="Add Group With Permissions" library="CommonKeywords">
 <arguments>
@@ -153,8 +164,8 @@ sessions | session | Can delete session'.</msg>
 <arguments>
 <arg>group_name=${group_name}</arg>
 </arguments>
-<msg timestamp="20200214 11:35:10.122" level="INFO">Typing text 'blog_editors' into text field '//*[@id="id_name"]'.</msg>
-<status status="PASS" starttime="20200214 11:35:10.122" endtime="20200214 11:35:10.245"></status>
+<msg timestamp="20200216 10:58:30.432" level="INFO">Typing text 'blog_editors' into text field '//*[@id="id_name"]'.</msg>
+<status status="PASS" starttime="20200216 10:58:30.431" endtime="20200216 10:58:30.524"></status>
 </kw>
 <kw name="${permision} IN [ @{permissions} ]" type="for">
 <kw name="${permision} = postings | blog post | Can add blog post" type="foritem">
@@ -165,9 +176,9 @@ sessions | session | Can delete session'.</msg>
 <assign>
 <var>${found_permissions}</var>
 </assign>
-<msg timestamp="20200214 11:35:10.246" level="INFO">Typing text 'postings | blog post | Can add blog post' into text field '//*[@id="id_permissions_input"]'.</msg>
-<msg timestamp="20200214 11:35:10.390" level="INFO">${found_permissions} = True</msg>
-<status status="PASS" starttime="20200214 11:35:10.246" endtime="20200214 11:35:10.390"></status>
+<msg timestamp="20200216 10:58:30.525" level="INFO">Typing text 'postings | blog post | Can add blog post' into text field '//*[@id="id_permissions_input"]'.</msg>
+<msg timestamp="20200216 10:58:30.672" level="INFO">${found_permissions} = True</msg>
+<status status="PASS" starttime="20200216 10:58:30.525" endtime="20200216 10:58:30.672"></status>
 </kw>
 <kw name="Run Keyword If" library="BuiltIn">
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
@@ -182,21 +193,21 @@ each and every element in filtered_permissions_elements. Then it clicks
 on choose_all_permissions_option. It then verifies that the permissions are added inside
 chosen_permissions_dropdown.
 :return: None</doc>
-<msg timestamp="20200214 11:35:10.422" level="INFO">['postings | blog post | Can add blog post']</msg>
-<msg timestamp="20200214 11:35:10.423" level="INFO">Sending key(s) ('CTRL',) to &lt;selenium.webdriver.firefox.webelement.FirefoxWebElement (session="9a8f52cd-1d7f-4b3b-9e2b-7094a2c8e89e", element="997bc3b0-b058-4ee5-8ebb-3ededcbf8844")&gt; element.</msg>
-<msg timestamp="20200214 11:35:10.780" level="INFO">Pressing special key CONTROL to element.</msg>
-<msg timestamp="20200214 11:35:10.780" level="INFO">Releasing special key CONTROL.</msg>
-<msg timestamp="20200214 11:35:10.800" level="INFO">Clicking link '//*[@id="id_permissions_add_all_link"]'.</msg>
-<msg timestamp="20200214 11:35:11.048" level="INFO">{'postings | blog post | Can add blog post'}</msg>
-<msg timestamp="20200214 11:35:11.048" level="INFO">{'postings | blog post | Can add blog post'}</msg>
-<status status="PASS" starttime="20200214 11:35:10.391" endtime="20200214 11:35:11.048"></status>
+<msg timestamp="20200216 10:58:30.693" level="INFO">['postings | blog post | Can add blog post']</msg>
+<msg timestamp="20200216 10:58:30.694" level="INFO">Sending key(s) ('CTRL',) to &lt;selenium.webdriver.firefox.webelement.FirefoxWebElement (session="f7d5eec0-0601-43a5-b7ed-531523b3d5cf", element="393703a6-a0cd-4c6d-bea6-170c0c238510")&gt; element.</msg>
+<msg timestamp="20200216 10:58:30.990" level="INFO">Pressing special key CONTROL to element.</msg>
+<msg timestamp="20200216 10:58:30.991" level="INFO">Releasing special key CONTROL.</msg>
+<msg timestamp="20200216 10:58:31.020" level="INFO">Clicking link '//*[@id="id_permissions_add_all_link"]'.</msg>
+<msg timestamp="20200216 10:58:31.333" level="INFO">{'postings | blog post | Can add blog post'}</msg>
+<msg timestamp="20200216 10:58:31.333" level="INFO">{'postings | blog post | Can add blog post'}</msg>
+<status status="PASS" starttime="20200216 10:58:30.673" endtime="20200216 10:58:31.333"></status>
 </kw>
-<status status="PASS" starttime="20200214 11:35:10.391" endtime="20200214 11:35:11.048"></status>
+<status status="PASS" starttime="20200216 10:58:30.672" endtime="20200216 10:58:31.333"></status>
 </kw>
 <kw name="Clear Available Permissions Filter" library="AddGroupPage">
-<status status="PASS" starttime="20200214 11:35:11.048" endtime="20200214 11:35:11.105"></status>
+<status status="PASS" starttime="20200216 10:58:31.334" endtime="20200216 10:58:31.373"></status>
 </kw>
-<status status="PASS" starttime="20200214 11:35:10.245" endtime="20200214 11:35:11.105"></status>
+<status status="PASS" starttime="20200216 10:58:30.524" endtime="20200216 10:58:31.373"></status>
 </kw>
 <kw name="${permision} = postings | blog post | Can change blog post" type="foritem">
 <kw name="Enter Search Term In Available Permissions Filter" library="AddGroupPage">
@@ -206,9 +217,9 @@ chosen_permissions_dropdown.
 <assign>
 <var>${found_permissions}</var>
 </assign>
-<msg timestamp="20200214 11:35:11.106" level="INFO">Typing text 'postings | blog post | Can change blog post' into text field '//*[@id="id_permissions_input"]'.</msg>
-<msg timestamp="20200214 11:35:11.249" level="INFO">${found_permissions} = True</msg>
-<status status="PASS" starttime="20200214 11:35:11.105" endtime="20200214 11:35:11.249"></status>
+<msg timestamp="20200216 10:58:31.381" level="INFO">Typing text 'postings | blog post | Can change blog post' into text field '//*[@id="id_permissions_input"]'.</msg>
+<msg timestamp="20200216 10:58:31.573" level="INFO">${found_permissions} = True</msg>
+<status status="PASS" starttime="20200216 10:58:31.374" endtime="20200216 10:58:31.573"></status>
 </kw>
 <kw name="Run Keyword If" library="BuiltIn">
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
@@ -223,21 +234,21 @@ each and every element in filtered_permissions_elements. Then it clicks
 on choose_all_permissions_option. It then verifies that the permissions are added inside
 chosen_permissions_dropdown.
 :return: None</doc>
-<msg timestamp="20200214 11:35:11.263" level="INFO">['postings | blog post | Can change blog post']</msg>
-<msg timestamp="20200214 11:35:11.263" level="INFO">Sending key(s) ('CTRL',) to &lt;selenium.webdriver.firefox.webelement.FirefoxWebElement (session="9a8f52cd-1d7f-4b3b-9e2b-7094a2c8e89e", element="8a7de507-87c1-4806-949b-3eefd6fa2b7d")&gt; element.</msg>
-<msg timestamp="20200214 11:35:11.608" level="INFO">Pressing special key CONTROL to element.</msg>
-<msg timestamp="20200214 11:35:11.609" level="INFO">Releasing special key CONTROL.</msg>
-<msg timestamp="20200214 11:35:11.629" level="INFO">Clicking link '//*[@id="id_permissions_add_all_link"]'.</msg>
-<msg timestamp="20200214 11:35:11.953" level="INFO">{'postings | blog post | Can change blog post', 'postings | blog post | Can add blog post'}</msg>
-<msg timestamp="20200214 11:35:11.954" level="INFO">{'postings | blog post | Can change blog post'}</msg>
-<status status="PASS" starttime="20200214 11:35:11.251" endtime="20200214 11:35:11.954"></status>
+<msg timestamp="20200216 10:58:31.607" level="INFO">['postings | blog post | Can change blog post']</msg>
+<msg timestamp="20200216 10:58:31.607" level="INFO">Sending key(s) ('CTRL',) to &lt;selenium.webdriver.firefox.webelement.FirefoxWebElement (session="f7d5eec0-0601-43a5-b7ed-531523b3d5cf", element="c0599579-dc98-44f1-9f6f-db231d359554")&gt; element.</msg>
+<msg timestamp="20200216 10:58:31.982" level="INFO">Pressing special key CONTROL to element.</msg>
+<msg timestamp="20200216 10:58:31.983" level="INFO">Releasing special key CONTROL.</msg>
+<msg timestamp="20200216 10:58:32.007" level="INFO">Clicking link '//*[@id="id_permissions_add_all_link"]'.</msg>
+<msg timestamp="20200216 10:58:32.356" level="INFO">{'postings | blog post | Can add blog post', 'postings | blog post | Can change blog post'}</msg>
+<msg timestamp="20200216 10:58:32.357" level="INFO">{'postings | blog post | Can change blog post'}</msg>
+<status status="PASS" starttime="20200216 10:58:31.578" endtime="20200216 10:58:32.357"></status>
 </kw>
-<status status="PASS" starttime="20200214 11:35:11.250" endtime="20200214 11:35:11.954"></status>
+<status status="PASS" starttime="20200216 10:58:31.577" endtime="20200216 10:58:32.357"></status>
 </kw>
 <kw name="Clear Available Permissions Filter" library="AddGroupPage">
-<status status="PASS" starttime="20200214 11:35:11.954" endtime="20200214 11:35:11.977"></status>
+<status status="PASS" starttime="20200216 10:58:32.357" endtime="20200216 10:58:32.382"></status>
 </kw>
-<status status="PASS" starttime="20200214 11:35:11.105" endtime="20200214 11:35:11.977"></status>
+<status status="PASS" starttime="20200216 10:58:31.374" endtime="20200216 10:58:32.382"></status>
 </kw>
 <kw name="${permision} = postings | blog post | Can delete blog post" type="foritem">
 <kw name="Enter Search Term In Available Permissions Filter" library="AddGroupPage">
@@ -247,9 +258,9 @@ chosen_permissions_dropdown.
 <assign>
 <var>${found_permissions}</var>
 </assign>
-<msg timestamp="20200214 11:35:11.977" level="INFO">Typing text 'postings | blog post | Can delete blog post' into text field '//*[@id="id_permissions_input"]'.</msg>
-<msg timestamp="20200214 11:35:12.097" level="INFO">${found_permissions} = True</msg>
-<status status="PASS" starttime="20200214 11:35:11.977" endtime="20200214 11:35:12.097"></status>
+<msg timestamp="20200216 10:58:32.382" level="INFO">Typing text 'postings | blog post | Can delete blog post' into text field '//*[@id="id_permissions_input"]'.</msg>
+<msg timestamp="20200216 10:58:32.502" level="INFO">${found_permissions} = True</msg>
+<status status="PASS" starttime="20200216 10:58:32.382" endtime="20200216 10:58:32.502"></status>
 </kw>
 <kw name="Run Keyword If" library="BuiltIn">
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
@@ -264,70 +275,70 @@ each and every element in filtered_permissions_elements. Then it clicks
 on choose_all_permissions_option. It then verifies that the permissions are added inside
 chosen_permissions_dropdown.
 :return: None</doc>
-<msg timestamp="20200214 11:35:12.111" level="INFO">['postings | blog post | Can delete blog post']</msg>
-<msg timestamp="20200214 11:35:12.111" level="INFO">Sending key(s) ('CTRL',) to &lt;selenium.webdriver.firefox.webelement.FirefoxWebElement (session="9a8f52cd-1d7f-4b3b-9e2b-7094a2c8e89e", element="ecef07f4-205f-4f2f-83e6-729eaf338563")&gt; element.</msg>
-<msg timestamp="20200214 11:35:12.398" level="INFO">Pressing special key CONTROL to element.</msg>
-<msg timestamp="20200214 11:35:12.399" level="INFO">Releasing special key CONTROL.</msg>
-<msg timestamp="20200214 11:35:12.428" level="INFO">Clicking link '//*[@id="id_permissions_add_all_link"]'.</msg>
-<msg timestamp="20200214 11:35:12.760" level="INFO">{'postings | blog post | Can delete blog post', 'postings | blog post | Can change blog post', 'postings | blog post | Can add blog post'}</msg>
-<msg timestamp="20200214 11:35:12.760" level="INFO">{'postings | blog post | Can delete blog post'}</msg>
-<status status="PASS" starttime="20200214 11:35:12.097" endtime="20200214 11:35:12.760"></status>
+<msg timestamp="20200216 10:58:32.518" level="INFO">['postings | blog post | Can delete blog post']</msg>
+<msg timestamp="20200216 10:58:32.519" level="INFO">Sending key(s) ('CTRL',) to &lt;selenium.webdriver.firefox.webelement.FirefoxWebElement (session="f7d5eec0-0601-43a5-b7ed-531523b3d5cf", element="123050b1-13b6-420f-bc0a-66c1f36f48f4")&gt; element.</msg>
+<msg timestamp="20200216 10:58:32.931" level="INFO">Pressing special key CONTROL to element.</msg>
+<msg timestamp="20200216 10:58:32.931" level="INFO">Releasing special key CONTROL.</msg>
+<msg timestamp="20200216 10:58:33.005" level="INFO">Clicking link '//*[@id="id_permissions_add_all_link"]'.</msg>
+<msg timestamp="20200216 10:58:33.437" level="INFO">{'postings | blog post | Can add blog post', 'postings | blog post | Can change blog post', 'postings | blog post | Can delete blog post'}</msg>
+<msg timestamp="20200216 10:58:33.437" level="INFO">{'postings | blog post | Can delete blog post'}</msg>
+<status status="PASS" starttime="20200216 10:58:32.502" endtime="20200216 10:58:33.437"></status>
 </kw>
-<status status="PASS" starttime="20200214 11:35:12.097" endtime="20200214 11:35:12.760"></status>
+<status status="PASS" starttime="20200216 10:58:32.502" endtime="20200216 10:58:33.437"></status>
 </kw>
 <kw name="Clear Available Permissions Filter" library="AddGroupPage">
-<status status="PASS" starttime="20200214 11:35:12.760" endtime="20200214 11:35:12.801"></status>
+<status status="PASS" starttime="20200216 10:58:33.437" endtime="20200216 10:58:33.469"></status>
 </kw>
-<status status="PASS" starttime="20200214 11:35:11.977" endtime="20200214 11:35:12.801"></status>
+<status status="PASS" starttime="20200216 10:58:32.382" endtime="20200216 10:58:33.469"></status>
 </kw>
-<status status="PASS" starttime="20200214 11:35:10.245" endtime="20200214 11:35:12.802"></status>
+<status status="PASS" starttime="20200216 10:58:30.524" endtime="20200216 10:58:33.469"></status>
 </kw>
 <kw name="Click On Save Button" library="AddGroupPage">
-<msg timestamp="20200214 11:35:12.802" level="INFO">Clicking element '//*[@id="group_form"]/div/div/input[1]'.</msg>
-<status status="PASS" starttime="20200214 11:35:12.802" endtime="20200214 11:35:14.416"></status>
+<msg timestamp="20200216 10:58:33.470" level="INFO">Clicking element '//*[@id="group_form"]/div/div/input[1]'.</msg>
+<status status="PASS" starttime="20200216 10:58:33.469" endtime="20200216 10:58:35.433"></status>
 </kw>
 <kw name="Verify Groups Page Loaded" library="GroupsPage">
 <arguments>
 <arg>group_name=${group_name}</arg>
 </arguments>
-<msg timestamp="20200214 11:35:14.498" level="INFO">Verifying element '//*[@id="container"]/div[2]' contains exact text 'Home › Authentication and Authorization › Groups'.</msg>
-<msg timestamp="20200214 11:35:14.523" level="INFO">Verifying element '//*[@id="container"]/div[2]/a[1]' contains exact text 'Home'.</msg>
-<msg timestamp="20200214 11:35:14.542" level="INFO">Verifying element '//*[@id="container"]/div[2]/a[2]' contains exact text 'Authentication and Authorization'.</msg>
-<msg timestamp="20200214 11:35:14.555" level="INFO">Verifying element '//*[@id="container"]/ul/li[@class="success"]' contains exact text 'The group "blog_editors" was added successfully.'.</msg>
-<msg timestamp="20200214 11:35:14.571" level="INFO">Verifying element '//*[@id="content"]/h1' contains exact text 'Select group to change'.</msg>
-<msg timestamp="20200214 11:35:14.594" level="INFO">Element '//*[@id="changelist-search"]/div/input[2]' attribute 'value' contains value 'Search'.</msg>
-<msg timestamp="20200214 11:35:14.594" level="INFO">Verifying element '//*[@id="changelist-form"]/div[1]/label' contains exact text 'Action:
+<msg timestamp="20200216 10:58:35.501" level="INFO">Verifying element '//*[@id="container"]/div[2]' contains exact text 'Home › Authentication and Authorization › Groups'.</msg>
+<msg timestamp="20200216 10:58:35.519" level="INFO">Verifying element '//*[@id="container"]/div[2]/a[1]' contains exact text 'Home'.</msg>
+<msg timestamp="20200216 10:58:35.531" level="INFO">Verifying element '//*[@id="container"]/div[2]/a[2]' contains exact text 'Authentication and Authorization'.</msg>
+<msg timestamp="20200216 10:58:35.542" level="INFO">Verifying element '//*[@id="container"]/ul/li[@class="success"]' contains exact text 'The group "blog_editors" was added successfully.'.</msg>
+<msg timestamp="20200216 10:58:35.556" level="INFO">Verifying element '//*[@id="content"]/h1' contains exact text 'Select group to change'.</msg>
+<msg timestamp="20200216 10:58:35.578" level="INFO">Element '//*[@id="changelist-search"]/div/input[2]' attribute 'value' contains value 'Search'.</msg>
+<msg timestamp="20200216 10:58:35.578" level="INFO">Verifying element '//*[@id="changelist-form"]/div[1]/label' contains exact text 'Action:
 ---------
 Delete selected groups'.</msg>
-<msg timestamp="20200214 11:35:14.616" level="INFO">Verifying element '//*[@id="changelist-form"]/div[1]/label/select/option[contains(.,"Delete selected groups")]' contains exact text 'Delete selected groups'.</msg>
-<msg timestamp="20200214 11:35:14.652" level="INFO">Observed 1 groups</msg>
-<msg timestamp="20200214 11:35:14.652" level="INFO">Verifying element '//*[@id="result_list"]/thead/tr/th[2]/div[1]/span' contains exact text 'GROUP'.</msg>
-<msg timestamp="20200214 11:35:14.683" level="INFO">Element '//*[@id="container"]/div[2]/a[1]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/'.</msg>
-<msg timestamp="20200214 11:35:14.708" level="INFO">Element '//*[@id="container"]/div[2]/a[2]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/'.</msg>
-<msg timestamp="20200214 11:35:14.723" level="INFO">Element '//*[@id="content-main"]/ul/li/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/group/add/'.</msg>
-<status status="PASS" starttime="20200214 11:35:14.417" endtime="20200214 11:35:14.736"></status>
+<msg timestamp="20200216 10:58:35.597" level="INFO">Verifying element '//*[@id="changelist-form"]/div[1]/label/select/option[contains(.,"Delete selected groups")]' contains exact text 'Delete selected groups'.</msg>
+<msg timestamp="20200216 10:58:35.633" level="INFO">Observed 3 groups</msg>
+<msg timestamp="20200216 10:58:35.633" level="INFO">Verifying element '//*[@id="result_list"]/thead/tr/th[2]/div[1]/span' contains exact text 'GROUP'.</msg>
+<msg timestamp="20200216 10:58:35.660" level="INFO">Element '//*[@id="container"]/div[2]/a[1]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/'.</msg>
+<msg timestamp="20200216 10:58:35.675" level="INFO">Element '//*[@id="container"]/div[2]/a[2]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/'.</msg>
+<msg timestamp="20200216 10:58:35.688" level="INFO">Element '//*[@id="content-main"]/ul/li/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/group/add/'.</msg>
+<status status="PASS" starttime="20200216 10:58:35.434" endtime="20200216 10:58:35.704"></status>
 </kw>
 <kw name="Verify Group Added" library="GroupsPage">
 <arguments>
 <arg>group_name=${group_name}</arg>
 </arguments>
-<msg timestamp="20200214 11:35:14.737" level="INFO">Verifying element '//*[@id="result_list"]/tbody/tr/th/a[contains(.,"blog_editors")]' contains exact text 'blog_editors'.</msg>
-<status status="PASS" starttime="20200214 11:35:14.736" endtime="20200214 11:35:14.748"></status>
+<msg timestamp="20200216 10:58:35.704" level="INFO">Verifying element '//*[@id="result_list"]/tbody/tr/th/a[contains(.,"blog_editors")]' contains exact text 'blog_editors'.</msg>
+<status status="PASS" starttime="20200216 10:58:35.704" endtime="20200216 10:58:35.716"></status>
 </kw>
-<status status="PASS" starttime="20200214 11:35:10.121" endtime="20200214 11:35:14.748"></status>
+<status status="PASS" starttime="20200216 10:58:30.430" endtime="20200216 10:58:35.716"></status>
 </kw>
-<status status="PASS" starttime="20200214 11:35:02.994" endtime="20200214 11:35:14.748" critical="yes"></status>
+<status status="PASS" starttime="20200216 10:58:28.056" endtime="20200216 10:58:35.716" critical="yes"></status>
 </test>
 <test id="s1-t3" name="Create &quot;Group Editors&quot; Group">
 <kw name="Go To Admin Main Page" library="AdminMainPage">
-<msg timestamp="20200214 11:35:14.750" level="INFO">Opening url 'https://glacial-earth-31542.herokuapp.com/admin/'</msg>
-<status status="PASS" starttime="20200214 11:35:14.750" endtime="20200214 11:35:16.127"></status>
+<msg timestamp="20200216 10:58:35.718" level="INFO">Opening url 'https://glacial-earth-31542.herokuapp.com/admin/'</msg>
+<status status="PASS" starttime="20200216 10:58:35.718" endtime="20200216 10:58:36.835"></status>
 </kw>
 <kw name="Click On Add Group Button" library="AdminLoginPage">
 <doc>In admin_main_page, it clicks on add_group button, once redirected to the add_group_page
 :return None</doc>
-<msg timestamp="20200214 11:35:16.128" level="INFO">Clicking link '//*[@id="content-main"]/div[1]/table/tbody/tr[1]/td[1]/a'.</msg>
-<status status="PASS" starttime="20200214 11:35:16.128" endtime="20200214 11:35:18.090"></status>
+<msg timestamp="20200216 10:58:36.836" level="INFO">Clicking link '//*[@id="content-main"]/div[1]/table/tbody/tr[1]/td[1]/a'.</msg>
+<status status="PASS" starttime="20200216 10:58:36.835" endtime="20200216 10:58:38.099"></status>
 </kw>
 <kw name="Verify Add Group Page" library="AddGroupPage">
 <doc>In admin_main_page, it clicks on add_group button, once redirected to the add_group_page.
@@ -335,12 +346,12 @@ Once redirection occurs, this method checks for element title to be visible on a
 Then it verifies that current url is expected_add_group_page_url
 It then verifies the page's texts and the links for correctness
 :return: None</doc>
-<msg timestamp="20200214 11:35:18.258" level="INFO">Verifying element '//*[@id="container"]/div[2]' contains exact text 'Home › Authentication and Authorization › Groups › Add group'.</msg>
-<msg timestamp="20200214 11:35:18.305" level="INFO">Verifying element '//*[@id="content"]/h1' contains exact text 'Add group'.</msg>
-<msg timestamp="20200214 11:35:18.332" level="INFO">Verifying element '//*[@id="group_form"]/div/fieldset/div[1]/div/label' contains exact text 'Name:'.</msg>
-<msg timestamp="20200214 11:35:18.349" level="INFO">Verifying element '//*[@id="group_form"]/div/fieldset/div[2]/div/label' contains exact text 'Permissions:'.</msg>
-<msg timestamp="20200214 11:35:18.364" level="INFO">Verifying element '//*[@id="group_form"]/div/fieldset/div[2]/div/div[1]/div/div[1]/h2' contains exact text 'Available permissions'.</msg>
-<msg timestamp="20200214 11:35:18.383" level="INFO">Verifying element '//*[@id="id_permissions_from"]' contains exact text 'admin | log entry | Can add log entry
+<msg timestamp="20200216 10:58:38.282" level="INFO">Verifying element '//*[@id="container"]/div[2]' contains exact text 'Home › Authentication and Authorization › Groups › Add group'.</msg>
+<msg timestamp="20200216 10:58:38.359" level="INFO">Verifying element '//*[@id="content"]/h1' contains exact text 'Add group'.</msg>
+<msg timestamp="20200216 10:58:38.380" level="INFO">Verifying element '//*[@id="group_form"]/div/fieldset/div[1]/div/label' contains exact text 'Name:'.</msg>
+<msg timestamp="20200216 10:58:38.400" level="INFO">Verifying element '//*[@id="group_form"]/div/fieldset/div[2]/div/label' contains exact text 'Permissions:'.</msg>
+<msg timestamp="20200216 10:58:38.411" level="INFO">Verifying element '//*[@id="group_form"]/div/fieldset/div[2]/div/div[1]/div/div[1]/h2' contains exact text 'Available permissions'.</msg>
+<msg timestamp="20200216 10:58:38.438" level="INFO">Verifying element '//*[@id="id_permissions_from"]' contains exact text 'admin | log entry | Can add log entry
 admin | log entry | Can change log entry
 admin | log entry | Can delete log entry
 auth | group | Can add group
@@ -361,22 +372,22 @@ postings | blog post | Can delete blog post
 sessions | session | Can add session
 sessions | session | Can change session
 sessions | session | Can delete session'.</msg>
-<msg timestamp="20200214 11:35:18.455" level="INFO">Element '//*[@id="group_form"]/div/fieldset/div[2]/div/div[1]/div/div[1]/h2/span' attribute 'title' contains value 'This is the list of available permissions. You may choose some by selecting them in the box below and then clicking the "Choose" arrow between the two boxes.'.</msg>
-<msg timestamp="20200214 11:35:18.455" level="INFO">Verifying element '//*[@id="id_permissions_add_all_link"]' contains exact text 'Choose all'.</msg>
-<msg timestamp="20200214 11:35:18.467" level="INFO">Verifying element '//*[@id="group_form"]/div/fieldset/div[2]/div/div[2]' contains exact text 'Hold down "Control", or "Command" on a Mac, to select more than one.'.</msg>
-<msg timestamp="20200214 11:35:18.480" level="INFO">Verifying element '//*[@id="group_form"]/div/fieldset/div[2]/div/div[1]/div/div[2]/h2' contains exact text 'Chosen permissions'.</msg>
-<msg timestamp="20200214 11:35:18.508" level="INFO">Element '//*[@id="group_form"]/div/fieldset/div[2]/div/div[1]/div/div[2]/h2/span' attribute 'title' contains value 'This is the list of chosen permissions. You may remove some by selecting them in the box below and then clicking the "Remove" arrow between the two boxes.'.</msg>
-<msg timestamp="20200214 11:35:18.508" level="INFO">Verifying element '//*[@id="id_permissions_to"]' contains exact text ''.</msg>
-<msg timestamp="20200214 11:35:18.521" level="INFO">Verifying element '//*[@id="id_permissions_remove_all_link"]' contains exact text 'Remove all'.</msg>
-<msg timestamp="20200214 11:35:18.573" level="INFO">Element '//*[@id="container"]/div[2]/a[1]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/'.</msg>
-<msg timestamp="20200214 11:35:18.599" level="INFO">Element '//*[@id="container"]/div[2]/a[2]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/'.</msg>
-<msg timestamp="20200214 11:35:18.614" level="INFO">Element '//*[@id="container"]/div[2]/a[3]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/group/'.</msg>
-<msg timestamp="20200214 11:35:18.628" level="INFO">Element '//*[@id="id_permissions_add_all_link"]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/group/add/#'.</msg>
-<msg timestamp="20200214 11:35:18.678" level="INFO">Element '//*[@id="id_permissions_remove_all_link"]' attribute 'class' contains value 'selector-clearall'.</msg>
-<msg timestamp="20200214 11:35:18.691" level="INFO">Element '//*[@id="group_form"]/div/div/input[2]' attribute 'value' contains value 'Save and add another'.</msg>
-<msg timestamp="20200214 11:35:18.704" level="INFO">Element '//*[@id="group_form"]/div/div/input[3]' attribute 'value' contains value 'Save and continue editing'.</msg>
-<msg timestamp="20200214 11:35:18.718" level="INFO">Element '//*[@id="group_form"]/div/div/input[1]' attribute 'value' contains value 'Save'.</msg>
-<status status="PASS" starttime="20200214 11:35:18.091" endtime="20200214 11:35:18.718"></status>
+<msg timestamp="20200216 10:58:38.513" level="INFO">Element '//*[@id="group_form"]/div/fieldset/div[2]/div/div[1]/div/div[1]/h2/span' attribute 'title' contains value 'This is the list of available permissions. You may choose some by selecting them in the box below and then clicking the "Choose" arrow between the two boxes.'.</msg>
+<msg timestamp="20200216 10:58:38.513" level="INFO">Verifying element '//*[@id="id_permissions_add_all_link"]' contains exact text 'Choose all'.</msg>
+<msg timestamp="20200216 10:58:38.542" level="INFO">Verifying element '//*[@id="group_form"]/div/fieldset/div[2]/div/div[2]' contains exact text 'Hold down "Control", or "Command" on a Mac, to select more than one.'.</msg>
+<msg timestamp="20200216 10:58:38.568" level="INFO">Verifying element '//*[@id="group_form"]/div/fieldset/div[2]/div/div[1]/div/div[2]/h2' contains exact text 'Chosen permissions'.</msg>
+<msg timestamp="20200216 10:58:38.623" level="INFO">Element '//*[@id="group_form"]/div/fieldset/div[2]/div/div[1]/div/div[2]/h2/span' attribute 'title' contains value 'This is the list of chosen permissions. You may remove some by selecting them in the box below and then clicking the "Remove" arrow between the two boxes.'.</msg>
+<msg timestamp="20200216 10:58:38.623" level="INFO">Verifying element '//*[@id="id_permissions_to"]' contains exact text ''.</msg>
+<msg timestamp="20200216 10:58:38.644" level="INFO">Verifying element '//*[@id="id_permissions_remove_all_link"]' contains exact text 'Remove all'.</msg>
+<msg timestamp="20200216 10:58:38.689" level="INFO">Element '//*[@id="container"]/div[2]/a[1]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/'.</msg>
+<msg timestamp="20200216 10:58:38.711" level="INFO">Element '//*[@id="container"]/div[2]/a[2]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/'.</msg>
+<msg timestamp="20200216 10:58:38.726" level="INFO">Element '//*[@id="container"]/div[2]/a[3]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/group/'.</msg>
+<msg timestamp="20200216 10:58:38.738" level="INFO">Element '//*[@id="id_permissions_add_all_link"]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/group/add/#'.</msg>
+<msg timestamp="20200216 10:58:38.782" level="INFO">Element '//*[@id="id_permissions_remove_all_link"]' attribute 'class' contains value 'selector-clearall'.</msg>
+<msg timestamp="20200216 10:58:38.795" level="INFO">Element '//*[@id="group_form"]/div/div/input[2]' attribute 'value' contains value 'Save and add another'.</msg>
+<msg timestamp="20200216 10:58:38.830" level="INFO">Element '//*[@id="group_form"]/div/div/input[3]' attribute 'value' contains value 'Save and continue editing'.</msg>
+<msg timestamp="20200216 10:58:38.867" level="INFO">Element '//*[@id="group_form"]/div/div/input[1]' attribute 'value' contains value 'Save'.</msg>
+<status status="PASS" starttime="20200216 10:58:38.099" endtime="20200216 10:58:38.867"></status>
 </kw>
 <kw name="Add Group With Permissions" library="CommonKeywords">
 <arguments>
@@ -387,8 +398,8 @@ sessions | session | Can delete session'.</msg>
 <arguments>
 <arg>group_name=${group_name}</arg>
 </arguments>
-<msg timestamp="20200214 11:35:18.720" level="INFO">Typing text 'group_editors' into text field '//*[@id="id_name"]'.</msg>
-<status status="PASS" starttime="20200214 11:35:18.719" endtime="20200214 11:35:18.766"></status>
+<msg timestamp="20200216 10:58:38.871" level="INFO">Typing text 'group_editors' into text field '//*[@id="id_name"]'.</msg>
+<status status="PASS" starttime="20200216 10:58:38.870" endtime="20200216 10:58:38.934"></status>
 </kw>
 <kw name="${permision} IN [ @{permissions} ]" type="for">
 <kw name="${permision} = auth | group | Can add group" type="foritem">
@@ -399,9 +410,9 @@ sessions | session | Can delete session'.</msg>
 <assign>
 <var>${found_permissions}</var>
 </assign>
-<msg timestamp="20200214 11:35:18.767" level="INFO">Typing text 'auth | group | Can add group' into text field '//*[@id="id_permissions_input"]'.</msg>
-<msg timestamp="20200214 11:35:18.869" level="INFO">${found_permissions} = True</msg>
-<status status="PASS" starttime="20200214 11:35:18.767" endtime="20200214 11:35:18.869"></status>
+<msg timestamp="20200216 10:58:38.935" level="INFO">Typing text 'auth | group | Can add group' into text field '//*[@id="id_permissions_input"]'.</msg>
+<msg timestamp="20200216 10:58:39.054" level="INFO">${found_permissions} = True</msg>
+<status status="PASS" starttime="20200216 10:58:38.935" endtime="20200216 10:58:39.054"></status>
 </kw>
 <kw name="Run Keyword If" library="BuiltIn">
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
@@ -416,21 +427,21 @@ each and every element in filtered_permissions_elements. Then it clicks
 on choose_all_permissions_option. It then verifies that the permissions are added inside
 chosen_permissions_dropdown.
 :return: None</doc>
-<msg timestamp="20200214 11:35:18.884" level="INFO">['auth | group | Can add group']</msg>
-<msg timestamp="20200214 11:35:18.885" level="INFO">Sending key(s) ('CTRL',) to &lt;selenium.webdriver.firefox.webelement.FirefoxWebElement (session="9a8f52cd-1d7f-4b3b-9e2b-7094a2c8e89e", element="13b76289-87df-4fa0-96a4-a587b48007e4")&gt; element.</msg>
-<msg timestamp="20200214 11:35:19.231" level="INFO">Pressing special key CONTROL to element.</msg>
-<msg timestamp="20200214 11:35:19.231" level="INFO">Releasing special key CONTROL.</msg>
-<msg timestamp="20200214 11:35:19.255" level="INFO">Clicking link '//*[@id="id_permissions_add_all_link"]'.</msg>
-<msg timestamp="20200214 11:35:19.557" level="INFO">{'auth | group | Can add group'}</msg>
-<msg timestamp="20200214 11:35:19.557" level="INFO">{'auth | group | Can add group'}</msg>
-<status status="PASS" starttime="20200214 11:35:18.870" endtime="20200214 11:35:19.557"></status>
+<msg timestamp="20200216 10:58:39.068" level="INFO">['auth | group | Can add group']</msg>
+<msg timestamp="20200216 10:58:39.069" level="INFO">Sending key(s) ('CTRL',) to &lt;selenium.webdriver.firefox.webelement.FirefoxWebElement (session="f7d5eec0-0601-43a5-b7ed-531523b3d5cf", element="a29a48dc-41ea-4da3-826c-c3296d908283")&gt; element.</msg>
+<msg timestamp="20200216 10:58:39.419" level="INFO">Pressing special key CONTROL to element.</msg>
+<msg timestamp="20200216 10:58:39.421" level="INFO">Releasing special key CONTROL.</msg>
+<msg timestamp="20200216 10:58:39.466" level="INFO">Clicking link '//*[@id="id_permissions_add_all_link"]'.</msg>
+<msg timestamp="20200216 10:58:39.794" level="INFO">{'auth | group | Can add group'}</msg>
+<msg timestamp="20200216 10:58:39.794" level="INFO">{'auth | group | Can add group'}</msg>
+<status status="PASS" starttime="20200216 10:58:39.055" endtime="20200216 10:58:39.795"></status>
 </kw>
-<status status="PASS" starttime="20200214 11:35:18.870" endtime="20200214 11:35:19.557"></status>
+<status status="PASS" starttime="20200216 10:58:39.054" endtime="20200216 10:58:39.795"></status>
 </kw>
 <kw name="Clear Available Permissions Filter" library="AddGroupPage">
-<status status="PASS" starttime="20200214 11:35:19.558" endtime="20200214 11:35:19.592"></status>
+<status status="PASS" starttime="20200216 10:58:39.795" endtime="20200216 10:58:39.833"></status>
 </kw>
-<status status="PASS" starttime="20200214 11:35:18.767" endtime="20200214 11:35:19.592"></status>
+<status status="PASS" starttime="20200216 10:58:38.935" endtime="20200216 10:58:39.833"></status>
 </kw>
 <kw name="${permision} = auth | group | Can change group" type="foritem">
 <kw name="Enter Search Term In Available Permissions Filter" library="AddGroupPage">
@@ -440,9 +451,9 @@ chosen_permissions_dropdown.
 <assign>
 <var>${found_permissions}</var>
 </assign>
-<msg timestamp="20200214 11:35:19.593" level="INFO">Typing text 'auth | group | Can change group' into text field '//*[@id="id_permissions_input"]'.</msg>
-<msg timestamp="20200214 11:35:19.706" level="INFO">${found_permissions} = True</msg>
-<status status="PASS" starttime="20200214 11:35:19.593" endtime="20200214 11:35:19.706"></status>
+<msg timestamp="20200216 10:58:39.834" level="INFO">Typing text 'auth | group | Can change group' into text field '//*[@id="id_permissions_input"]'.</msg>
+<msg timestamp="20200216 10:58:40.002" level="INFO">${found_permissions} = True</msg>
+<status status="PASS" starttime="20200216 10:58:39.833" endtime="20200216 10:58:40.002"></status>
 </kw>
 <kw name="Run Keyword If" library="BuiltIn">
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
@@ -457,21 +468,21 @@ each and every element in filtered_permissions_elements. Then it clicks
 on choose_all_permissions_option. It then verifies that the permissions are added inside
 chosen_permissions_dropdown.
 :return: None</doc>
-<msg timestamp="20200214 11:35:19.738" level="INFO">['auth | group | Can change group']</msg>
-<msg timestamp="20200214 11:35:19.738" level="INFO">Sending key(s) ('CTRL',) to &lt;selenium.webdriver.firefox.webelement.FirefoxWebElement (session="9a8f52cd-1d7f-4b3b-9e2b-7094a2c8e89e", element="a93070dc-c6a0-4322-98b6-d7b6b6528871")&gt; element.</msg>
-<msg timestamp="20200214 11:35:20.106" level="INFO">Pressing special key CONTROL to element.</msg>
-<msg timestamp="20200214 11:35:20.106" level="INFO">Releasing special key CONTROL.</msg>
-<msg timestamp="20200214 11:35:20.153" level="INFO">Clicking link '//*[@id="id_permissions_add_all_link"]'.</msg>
-<msg timestamp="20200214 11:35:20.580" level="INFO">{'auth | group | Can add group', 'auth | group | Can change group'}</msg>
-<msg timestamp="20200214 11:35:20.580" level="INFO">{'auth | group | Can change group'}</msg>
-<status status="PASS" starttime="20200214 11:35:19.707" endtime="20200214 11:35:20.580"></status>
+<msg timestamp="20200216 10:58:40.037" level="INFO">['auth | group | Can change group']</msg>
+<msg timestamp="20200216 10:58:40.038" level="INFO">Sending key(s) ('CTRL',) to &lt;selenium.webdriver.firefox.webelement.FirefoxWebElement (session="f7d5eec0-0601-43a5-b7ed-531523b3d5cf", element="ece0812d-2b2a-4097-a7ab-6564f04084ff")&gt; element.</msg>
+<msg timestamp="20200216 10:58:40.391" level="INFO">Pressing special key CONTROL to element.</msg>
+<msg timestamp="20200216 10:58:40.392" level="INFO">Releasing special key CONTROL.</msg>
+<msg timestamp="20200216 10:58:40.406" level="INFO">Clicking link '//*[@id="id_permissions_add_all_link"]'.</msg>
+<msg timestamp="20200216 10:58:40.708" level="INFO">{'auth | group | Can change group', 'auth | group | Can add group'}</msg>
+<msg timestamp="20200216 10:58:40.709" level="INFO">{'auth | group | Can change group'}</msg>
+<status status="PASS" starttime="20200216 10:58:40.003" endtime="20200216 10:58:40.709"></status>
 </kw>
-<status status="PASS" starttime="20200214 11:35:19.706" endtime="20200214 11:35:20.580"></status>
+<status status="PASS" starttime="20200216 10:58:40.003" endtime="20200216 10:58:40.709"></status>
 </kw>
 <kw name="Clear Available Permissions Filter" library="AddGroupPage">
-<status status="PASS" starttime="20200214 11:35:20.580" endtime="20200214 11:35:20.600"></status>
+<status status="PASS" starttime="20200216 10:58:40.710" endtime="20200216 10:58:40.760"></status>
 </kw>
-<status status="PASS" starttime="20200214 11:35:19.593" endtime="20200214 11:35:20.600"></status>
+<status status="PASS" starttime="20200216 10:58:39.833" endtime="20200216 10:58:40.760"></status>
 </kw>
 <kw name="${permision} = auth | group | Can delete group" type="foritem">
 <kw name="Enter Search Term In Available Permissions Filter" library="AddGroupPage">
@@ -481,9 +492,9 @@ chosen_permissions_dropdown.
 <assign>
 <var>${found_permissions}</var>
 </assign>
-<msg timestamp="20200214 11:35:20.602" level="INFO">Typing text 'auth | group | Can delete group' into text field '//*[@id="id_permissions_input"]'.</msg>
-<msg timestamp="20200214 11:35:20.704" level="INFO">${found_permissions} = True</msg>
-<status status="PASS" starttime="20200214 11:35:20.600" endtime="20200214 11:35:20.704"></status>
+<msg timestamp="20200216 10:58:40.763" level="INFO">Typing text 'auth | group | Can delete group' into text field '//*[@id="id_permissions_input"]'.</msg>
+<msg timestamp="20200216 10:58:40.929" level="INFO">${found_permissions} = True</msg>
+<status status="PASS" starttime="20200216 10:58:40.762" endtime="20200216 10:58:40.929"></status>
 </kw>
 <kw name="Run Keyword If" library="BuiltIn">
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
@@ -498,59 +509,59 @@ each and every element in filtered_permissions_elements. Then it clicks
 on choose_all_permissions_option. It then verifies that the permissions are added inside
 chosen_permissions_dropdown.
 :return: None</doc>
-<msg timestamp="20200214 11:35:20.741" level="INFO">['auth | group | Can delete group']</msg>
-<msg timestamp="20200214 11:35:20.741" level="INFO">Sending key(s) ('CTRL',) to &lt;selenium.webdriver.firefox.webelement.FirefoxWebElement (session="9a8f52cd-1d7f-4b3b-9e2b-7094a2c8e89e", element="54583db6-0350-4e0d-be22-43fba280f29e")&gt; element.</msg>
-<msg timestamp="20200214 11:35:21.077" level="INFO">Pressing special key CONTROL to element.</msg>
-<msg timestamp="20200214 11:35:21.077" level="INFO">Releasing special key CONTROL.</msg>
-<msg timestamp="20200214 11:35:21.104" level="INFO">Clicking link '//*[@id="id_permissions_add_all_link"]'.</msg>
-<msg timestamp="20200214 11:35:21.477" level="INFO">{'auth | group | Can add group', 'auth | group | Can delete group', 'auth | group | Can change group'}</msg>
-<msg timestamp="20200214 11:35:21.477" level="INFO">{'auth | group | Can delete group'}</msg>
-<status status="PASS" starttime="20200214 11:35:20.705" endtime="20200214 11:35:21.477"></status>
+<msg timestamp="20200216 10:58:40.944" level="INFO">['auth | group | Can delete group']</msg>
+<msg timestamp="20200216 10:58:40.944" level="INFO">Sending key(s) ('CTRL',) to &lt;selenium.webdriver.firefox.webelement.FirefoxWebElement (session="f7d5eec0-0601-43a5-b7ed-531523b3d5cf", element="0b3dc570-4983-467f-9cd9-94350251cced")&gt; element.</msg>
+<msg timestamp="20200216 10:58:41.383" level="INFO">Pressing special key CONTROL to element.</msg>
+<msg timestamp="20200216 10:58:41.384" level="INFO">Releasing special key CONTROL.</msg>
+<msg timestamp="20200216 10:58:41.456" level="INFO">Clicking link '//*[@id="id_permissions_add_all_link"]'.</msg>
+<msg timestamp="20200216 10:58:41.852" level="INFO">{'auth | group | Can change group', 'auth | group | Can add group', 'auth | group | Can delete group'}</msg>
+<msg timestamp="20200216 10:58:41.852" level="INFO">{'auth | group | Can delete group'}</msg>
+<status status="PASS" starttime="20200216 10:58:40.932" endtime="20200216 10:58:41.853"></status>
 </kw>
-<status status="PASS" starttime="20200214 11:35:20.704" endtime="20200214 11:35:21.477"></status>
+<status status="PASS" starttime="20200216 10:58:40.931" endtime="20200216 10:58:41.853"></status>
 </kw>
 <kw name="Clear Available Permissions Filter" library="AddGroupPage">
-<status status="PASS" starttime="20200214 11:35:21.477" endtime="20200214 11:35:21.504"></status>
+<status status="PASS" starttime="20200216 10:58:41.854" endtime="20200216 10:58:41.906"></status>
 </kw>
-<status status="PASS" starttime="20200214 11:35:20.600" endtime="20200214 11:35:21.504"></status>
+<status status="PASS" starttime="20200216 10:58:40.761" endtime="20200216 10:58:41.906"></status>
 </kw>
-<status status="PASS" starttime="20200214 11:35:18.766" endtime="20200214 11:35:21.504"></status>
+<status status="PASS" starttime="20200216 10:58:38.935" endtime="20200216 10:58:41.906"></status>
 </kw>
 <kw name="Click On Save Button" library="AddGroupPage">
-<msg timestamp="20200214 11:35:21.504" level="INFO">Clicking element '//*[@id="group_form"]/div/div/input[1]'.</msg>
-<status status="PASS" starttime="20200214 11:35:21.504" endtime="20200214 11:35:23.104"></status>
+<msg timestamp="20200216 10:58:41.906" level="INFO">Clicking element '//*[@id="group_form"]/div/div/input[1]'.</msg>
+<status status="PASS" starttime="20200216 10:58:41.906" endtime="20200216 10:58:43.718"></status>
 </kw>
 <kw name="Verify Groups Page Loaded" library="GroupsPage">
 <arguments>
 <arg>group_name=${group_name}</arg>
 </arguments>
-<msg timestamp="20200214 11:35:23.218" level="INFO">Verifying element '//*[@id="container"]/div[2]' contains exact text 'Home › Authentication and Authorization › Groups'.</msg>
-<msg timestamp="20200214 11:35:23.232" level="INFO">Verifying element '//*[@id="container"]/div[2]/a[1]' contains exact text 'Home'.</msg>
-<msg timestamp="20200214 11:35:23.244" level="INFO">Verifying element '//*[@id="container"]/div[2]/a[2]' contains exact text 'Authentication and Authorization'.</msg>
-<msg timestamp="20200214 11:35:23.256" level="INFO">Verifying element '//*[@id="container"]/ul/li[@class="success"]' contains exact text 'The group "group_editors" was added successfully.'.</msg>
-<msg timestamp="20200214 11:35:23.269" level="INFO">Verifying element '//*[@id="content"]/h1' contains exact text 'Select group to change'.</msg>
-<msg timestamp="20200214 11:35:23.294" level="INFO">Element '//*[@id="changelist-search"]/div/input[2]' attribute 'value' contains value 'Search'.</msg>
-<msg timestamp="20200214 11:35:23.294" level="INFO">Verifying element '//*[@id="changelist-form"]/div[1]/label' contains exact text 'Action:
+<msg timestamp="20200216 10:58:43.827" level="INFO">Verifying element '//*[@id="container"]/div[2]' contains exact text 'Home › Authentication and Authorization › Groups'.</msg>
+<msg timestamp="20200216 10:58:43.852" level="INFO">Verifying element '//*[@id="container"]/div[2]/a[1]' contains exact text 'Home'.</msg>
+<msg timestamp="20200216 10:58:43.869" level="INFO">Verifying element '//*[@id="container"]/div[2]/a[2]' contains exact text 'Authentication and Authorization'.</msg>
+<msg timestamp="20200216 10:58:43.880" level="INFO">Verifying element '//*[@id="container"]/ul/li[@class="success"]' contains exact text 'The group "group_editors" was added successfully.'.</msg>
+<msg timestamp="20200216 10:58:43.893" level="INFO">Verifying element '//*[@id="content"]/h1' contains exact text 'Select group to change'.</msg>
+<msg timestamp="20200216 10:58:43.921" level="INFO">Element '//*[@id="changelist-search"]/div/input[2]' attribute 'value' contains value 'Search'.</msg>
+<msg timestamp="20200216 10:58:43.921" level="INFO">Verifying element '//*[@id="changelist-form"]/div[1]/label' contains exact text 'Action:
 ---------
 Delete selected groups'.</msg>
-<msg timestamp="20200214 11:35:23.316" level="INFO">Verifying element '//*[@id="changelist-form"]/div[1]/label/select/option[contains(.,"Delete selected groups")]' contains exact text 'Delete selected groups'.</msg>
-<msg timestamp="20200214 11:35:23.350" level="INFO">Observed 2 groups</msg>
-<msg timestamp="20200214 11:35:23.350" level="INFO">Verifying element '//*[@id="result_list"]/thead/tr/th[2]/div[1]/span' contains exact text 'GROUP'.</msg>
-<msg timestamp="20200214 11:35:23.376" level="INFO">Element '//*[@id="container"]/div[2]/a[1]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/'.</msg>
-<msg timestamp="20200214 11:35:23.401" level="INFO">Element '//*[@id="container"]/div[2]/a[2]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/'.</msg>
-<msg timestamp="20200214 11:35:23.437" level="INFO">Element '//*[@id="content-main"]/ul/li/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/group/add/'.</msg>
-<status status="PASS" starttime="20200214 11:35:23.104" endtime="20200214 11:35:23.462"></status>
+<msg timestamp="20200216 10:58:43.939" level="INFO">Verifying element '//*[@id="changelist-form"]/div[1]/label/select/option[contains(.,"Delete selected groups")]' contains exact text 'Delete selected groups'.</msg>
+<msg timestamp="20200216 10:58:43.974" level="INFO">Observed 4 groups</msg>
+<msg timestamp="20200216 10:58:43.974" level="INFO">Verifying element '//*[@id="result_list"]/thead/tr/th[2]/div[1]/span' contains exact text 'GROUP'.</msg>
+<msg timestamp="20200216 10:58:44.007" level="INFO">Element '//*[@id="container"]/div[2]/a[1]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/'.</msg>
+<msg timestamp="20200216 10:58:44.020" level="INFO">Element '//*[@id="container"]/div[2]/a[2]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/'.</msg>
+<msg timestamp="20200216 10:58:44.034" level="INFO">Element '//*[@id="content-main"]/ul/li/a' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/group/add/'.</msg>
+<status status="PASS" starttime="20200216 10:58:43.719" endtime="20200216 10:58:44.068"></status>
 </kw>
 <kw name="Verify Group Added" library="GroupsPage">
 <arguments>
 <arg>group_name=${group_name}</arg>
 </arguments>
-<msg timestamp="20200214 11:35:23.463" level="INFO">Verifying element '//*[@id="result_list"]/tbody/tr/th/a[contains(.,"group_editors")]' contains exact text 'group_editors'.</msg>
-<status status="PASS" starttime="20200214 11:35:23.462" endtime="20200214 11:35:23.492"></status>
+<msg timestamp="20200216 10:58:44.069" level="INFO">Verifying element '//*[@id="result_list"]/tbody/tr/th/a[contains(.,"group_editors")]' contains exact text 'group_editors'.</msg>
+<status status="PASS" starttime="20200216 10:58:44.068" endtime="20200216 10:58:44.099"></status>
 </kw>
-<status status="PASS" starttime="20200214 11:35:18.718" endtime="20200214 11:35:23.492"></status>
+<status status="PASS" starttime="20200216 10:58:38.869" endtime="20200216 10:58:44.099"></status>
 </kw>
-<status status="PASS" starttime="20200214 11:35:14.749" endtime="20200214 11:35:23.492" critical="yes"></status>
+<status status="PASS" starttime="20200216 10:58:35.717" endtime="20200216 10:58:44.099" critical="yes"></status>
 </test>
 <test id="s1-t4" name="Delete &quot;Blog Editors&quot; Group">
 <kw name="Delete Group" library="CommonKeywords">
@@ -561,41 +572,41 @@ Delete selected groups'.</msg>
 <arguments>
 <arg>group_name=${group_name}</arg>
 </arguments>
-<msg timestamp="20200214 11:35:23.498" level="INFO">Clicking element '//*[@id="result_list"]/tbody/tr[contains(.,"blog_editors")]/td/input[@type="checkbox"]'.</msg>
-<status status="PASS" starttime="20200214 11:35:23.498" endtime="20200214 11:35:23.764"></status>
+<msg timestamp="20200216 10:58:44.103" level="INFO">Clicking element '//*[@id="result_list"]/tbody/tr[contains(.,"blog_editors")]/td/input[@type="checkbox"]'.</msg>
+<status status="PASS" starttime="20200216 10:58:44.103" endtime="20200216 10:58:44.365"></status>
 </kw>
 <kw name="Select Delete Selected Groups Dropdown" library="GroupsPage">
-<msg timestamp="20200214 11:35:23.764" level="INFO">Clicking element '//*[@id="changelist-form"]/div[1]/label/select/option[contains(.,"Delete selected groups")]'.</msg>
-<status status="PASS" starttime="20200214 11:35:23.764" endtime="20200214 11:35:23.993"></status>
+<msg timestamp="20200216 10:58:44.366" level="INFO">Clicking element '//*[@id="changelist-form"]/div[1]/label/select/option[contains(.,"Delete selected groups")]'.</msg>
+<status status="PASS" starttime="20200216 10:58:44.366" endtime="20200216 10:58:44.650"></status>
 </kw>
 <kw name="Press Go" library="GroupsPage">
-<msg timestamp="20200214 11:35:23.995" level="INFO">Clicking element '//*[@id="changelist-form"]/div[1]/button'.</msg>
-<status status="PASS" starttime="20200214 11:35:23.994" endtime="20200214 11:35:25.038"></status>
+<msg timestamp="20200216 10:58:44.652" level="INFO">Clicking element '//*[@id="changelist-form"]/div[1]/button'.</msg>
+<status status="PASS" starttime="20200216 10:58:44.651" endtime="20200216 10:58:45.722"></status>
 </kw>
 <kw name="Verify Confirm Group Deletions Page" library="ConfirmGroupsDeletionsPage">
 <arguments>
 <arg>group_name=${group_name}</arg>
 </arguments>
-<msg timestamp="20200214 11:35:25.162" level="INFO">Verifying element '//*[@id="container"]/div[2]' contains exact text 'Home › Authentication and Authorization › Groups › Delete multiple objects'.</msg>
-<msg timestamp="20200214 11:35:25.208" level="INFO">Verifying element '//*[@id="content"]/h1' contains exact text 'Are you sure?'.</msg>
-<msg timestamp="20200214 11:35:25.224" level="INFO">Verifying element '//*[@id="content"]/p' contains exact text 'Are you sure you want to delete the selected group? All of the following objects and their related items will be deleted:'.</msg>
-<msg timestamp="20200214 11:35:25.237" level="INFO">Verifying element '//*[@id="content"]/h2[1]' contains exact text 'Summary'.</msg>
-<msg timestamp="20200214 11:35:25.250" level="INFO">Verifying element '//*[@id="content"]/h2[2]' contains exact text 'Objects'.</msg>
-<msg timestamp="20200214 11:35:25.263" level="INFO">Verifying element '//*[@id="content"]/ul[2]/li/a[contains(.,"blog_editors")]' contains exact text 'blog_editors'.</msg>
-<msg timestamp="20200214 11:35:25.290" level="INFO">Element '//*[@id="content"]/form/div/input[4]' attribute 'value' contains value 'Yes, I'm sure'.</msg>
-<msg timestamp="20200214 11:35:25.290" level="INFO">Verifying element '//*[@id="content"]/form/div/a' contains exact text 'No, take me back'.</msg>
-<msg timestamp="20200214 11:35:25.316" level="INFO">Element '//*[@id="container"]/div[2]/a[1]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/'.</msg>
-<msg timestamp="20200214 11:35:25.333" level="INFO">Element '//*[@id="container"]/div[2]/a[2]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/'.</msg>
-<msg timestamp="20200214 11:35:25.347" level="INFO">Element '//*[@id="container"]/div[2]/a[3]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/group/'.</msg>
-<status status="PASS" starttime="20200214 11:35:25.038" endtime="20200214 11:35:25.376"></status>
+<msg timestamp="20200216 10:58:45.974" level="INFO">Verifying element '//*[@id="container"]/div[2]' contains exact text 'Home › Authentication and Authorization › Groups › Delete multiple objects'.</msg>
+<msg timestamp="20200216 10:58:46.051" level="INFO">Verifying element '//*[@id="content"]/h1' contains exact text 'Are you sure?'.</msg>
+<msg timestamp="20200216 10:58:46.099" level="INFO">Verifying element '//*[@id="content"]/p' contains exact text 'Are you sure you want to delete the selected group? All of the following objects and their related items will be deleted:'.</msg>
+<msg timestamp="20200216 10:58:46.154" level="INFO">Verifying element '//*[@id="content"]/h2[1]' contains exact text 'Summary'.</msg>
+<msg timestamp="20200216 10:58:46.174" level="INFO">Verifying element '//*[@id="content"]/h2[2]' contains exact text 'Objects'.</msg>
+<msg timestamp="20200216 10:58:46.190" level="INFO">Verifying element '//*[@id="content"]/ul[2]/li/a[contains(.,"blog_editors")]' contains exact text 'blog_editors'.</msg>
+<msg timestamp="20200216 10:58:46.224" level="INFO">Element '//*[@id="content"]/form/div/input[4]' attribute 'value' contains value 'Yes, I'm sure'.</msg>
+<msg timestamp="20200216 10:58:46.224" level="INFO">Verifying element '//*[@id="content"]/form/div/a' contains exact text 'No, take me back'.</msg>
+<msg timestamp="20200216 10:58:46.262" level="INFO">Element '//*[@id="container"]/div[2]/a[1]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/'.</msg>
+<msg timestamp="20200216 10:58:46.277" level="INFO">Element '//*[@id="container"]/div[2]/a[2]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/'.</msg>
+<msg timestamp="20200216 10:58:46.292" level="INFO">Element '//*[@id="container"]/div[2]/a[3]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/group/'.</msg>
+<status status="PASS" starttime="20200216 10:58:45.722" endtime="20200216 10:58:46.320"></status>
 </kw>
 <kw name="Press Confirm Button" library="ConfirmGroupsDeletionsPage">
-<msg timestamp="20200214 11:35:25.377" level="INFO">Clicking element '//*[@id="content"]/form/div/input[4]'.</msg>
-<status status="PASS" starttime="20200214 11:35:25.377" endtime="20200214 11:35:26.705"></status>
+<msg timestamp="20200216 10:58:46.321" level="INFO">Clicking element '//*[@id="content"]/form/div/input[4]'.</msg>
+<status status="PASS" starttime="20200216 10:58:46.320" endtime="20200216 10:58:47.786"></status>
 </kw>
-<status status="PASS" starttime="20200214 11:35:23.497" endtime="20200214 11:35:26.706"></status>
+<status status="PASS" starttime="20200216 10:58:44.102" endtime="20200216 10:58:47.786"></status>
 </kw>
-<status status="PASS" starttime="20200214 11:35:23.497" endtime="20200214 11:35:26.706" critical="yes"></status>
+<status status="PASS" starttime="20200216 10:58:44.102" endtime="20200216 10:58:47.787" critical="yes"></status>
 </test>
 <test id="s1-t5" name="Delete &quot;Group Editors&quot; Group">
 <kw name="Delete Group" library="CommonKeywords">
@@ -606,51 +617,51 @@ Delete selected groups'.</msg>
 <arguments>
 <arg>group_name=${group_name}</arg>
 </arguments>
-<msg timestamp="20200214 11:35:26.710" level="INFO">Clicking element '//*[@id="result_list"]/tbody/tr[contains(.,"group_editors")]/td/input[@type="checkbox"]'.</msg>
-<status status="PASS" starttime="20200214 11:35:26.710" endtime="20200214 11:35:27.042"></status>
+<msg timestamp="20200216 10:58:47.791" level="INFO">Clicking element '//*[@id="result_list"]/tbody/tr[contains(.,"group_editors")]/td/input[@type="checkbox"]'.</msg>
+<status status="PASS" starttime="20200216 10:58:47.790" endtime="20200216 10:58:48.100"></status>
 </kw>
 <kw name="Select Delete Selected Groups Dropdown" library="GroupsPage">
-<msg timestamp="20200214 11:35:27.043" level="INFO">Clicking element '//*[@id="changelist-form"]/div[1]/label/select/option[contains(.,"Delete selected groups")]'.</msg>
-<status status="PASS" starttime="20200214 11:35:27.042" endtime="20200214 11:35:27.334"></status>
+<msg timestamp="20200216 10:58:48.102" level="INFO">Clicking element '//*[@id="changelist-form"]/div[1]/label/select/option[contains(.,"Delete selected groups")]'.</msg>
+<status status="PASS" starttime="20200216 10:58:48.101" endtime="20200216 10:58:48.401"></status>
 </kw>
 <kw name="Press Go" library="GroupsPage">
-<msg timestamp="20200214 11:35:27.336" level="INFO">Clicking element '//*[@id="changelist-form"]/div[1]/button'.</msg>
-<status status="PASS" starttime="20200214 11:35:27.335" endtime="20200214 11:35:28.442"></status>
+<msg timestamp="20200216 10:58:48.402" level="INFO">Clicking element '//*[@id="changelist-form"]/div[1]/button'.</msg>
+<status status="PASS" starttime="20200216 10:58:48.401" endtime="20200216 10:58:49.483"></status>
 </kw>
 <kw name="Verify Confirm Group Deletions Page" library="ConfirmGroupsDeletionsPage">
 <arguments>
 <arg>group_name=${group_name}</arg>
 </arguments>
-<msg timestamp="20200214 11:35:28.538" level="INFO">Verifying element '//*[@id="container"]/div[2]' contains exact text 'Home › Authentication and Authorization › Groups › Delete multiple objects'.</msg>
-<msg timestamp="20200214 11:35:28.573" level="INFO">Verifying element '//*[@id="content"]/h1' contains exact text 'Are you sure?'.</msg>
-<msg timestamp="20200214 11:35:28.594" level="INFO">Verifying element '//*[@id="content"]/p' contains exact text 'Are you sure you want to delete the selected group? All of the following objects and their related items will be deleted:'.</msg>
-<msg timestamp="20200214 11:35:28.617" level="INFO">Verifying element '//*[@id="content"]/h2[1]' contains exact text 'Summary'.</msg>
-<msg timestamp="20200214 11:35:28.629" level="INFO">Verifying element '//*[@id="content"]/h2[2]' contains exact text 'Objects'.</msg>
-<msg timestamp="20200214 11:35:28.641" level="INFO">Verifying element '//*[@id="content"]/ul[2]/li/a[contains(.,"group_editors")]' contains exact text 'group_editors'.</msg>
-<msg timestamp="20200214 11:35:28.668" level="INFO">Element '//*[@id="content"]/form/div/input[4]' attribute 'value' contains value 'Yes, I'm sure'.</msg>
-<msg timestamp="20200214 11:35:28.668" level="INFO">Verifying element '//*[@id="content"]/form/div/a' contains exact text 'No, take me back'.</msg>
-<msg timestamp="20200214 11:35:28.696" level="INFO">Element '//*[@id="container"]/div[2]/a[1]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/'.</msg>
-<msg timestamp="20200214 11:35:28.709" level="INFO">Element '//*[@id="container"]/div[2]/a[2]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/'.</msg>
-<msg timestamp="20200214 11:35:28.724" level="INFO">Element '//*[@id="container"]/div[2]/a[3]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/group/'.</msg>
-<status status="PASS" starttime="20200214 11:35:28.442" endtime="20200214 11:35:28.759"></status>
+<msg timestamp="20200216 10:58:49.636" level="INFO">Verifying element '//*[@id="container"]/div[2]' contains exact text 'Home › Authentication and Authorization › Groups › Delete multiple objects'.</msg>
+<msg timestamp="20200216 10:58:49.692" level="INFO">Verifying element '//*[@id="content"]/h1' contains exact text 'Are you sure?'.</msg>
+<msg timestamp="20200216 10:58:49.714" level="INFO">Verifying element '//*[@id="content"]/p' contains exact text 'Are you sure you want to delete the selected group? All of the following objects and their related items will be deleted:'.</msg>
+<msg timestamp="20200216 10:58:49.741" level="INFO">Verifying element '//*[@id="content"]/h2[1]' contains exact text 'Summary'.</msg>
+<msg timestamp="20200216 10:58:49.766" level="INFO">Verifying element '//*[@id="content"]/h2[2]' contains exact text 'Objects'.</msg>
+<msg timestamp="20200216 10:58:49.793" level="INFO">Verifying element '//*[@id="content"]/ul[2]/li/a[contains(.,"group_editors")]' contains exact text 'group_editors'.</msg>
+<msg timestamp="20200216 10:58:49.825" level="INFO">Element '//*[@id="content"]/form/div/input[4]' attribute 'value' contains value 'Yes, I'm sure'.</msg>
+<msg timestamp="20200216 10:58:49.825" level="INFO">Verifying element '//*[@id="content"]/form/div/a' contains exact text 'No, take me back'.</msg>
+<msg timestamp="20200216 10:58:49.861" level="INFO">Element '//*[@id="container"]/div[2]/a[1]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/'.</msg>
+<msg timestamp="20200216 10:58:49.890" level="INFO">Element '//*[@id="container"]/div[2]/a[2]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/'.</msg>
+<msg timestamp="20200216 10:58:49.915" level="INFO">Element '//*[@id="container"]/div[2]/a[3]' attribute 'href' contains value 'https://glacial-earth-31542.herokuapp.com/admin/auth/group/'.</msg>
+<status status="PASS" starttime="20200216 10:58:49.483" endtime="20200216 10:58:49.944"></status>
 </kw>
 <kw name="Press Confirm Button" library="ConfirmGroupsDeletionsPage">
-<msg timestamp="20200214 11:35:28.759" level="INFO">Clicking element '//*[@id="content"]/form/div/input[4]'.</msg>
-<status status="PASS" starttime="20200214 11:35:28.759" endtime="20200214 11:35:30.072"></status>
+<msg timestamp="20200216 10:58:49.945" level="INFO">Clicking element '//*[@id="content"]/form/div/input[4]'.</msg>
+<status status="PASS" starttime="20200216 10:58:49.944" endtime="20200216 10:58:51.391"></status>
 </kw>
-<status status="PASS" starttime="20200214 11:35:26.709" endtime="20200214 11:35:30.072"></status>
+<status status="PASS" starttime="20200216 10:58:47.789" endtime="20200216 10:58:51.391"></status>
 </kw>
-<status status="PASS" starttime="20200214 11:35:26.708" endtime="20200214 11:35:30.073" critical="yes"></status>
+<status status="PASS" starttime="20200216 10:58:47.788" endtime="20200216 10:58:51.393" critical="yes"></status>
 </test>
 <kw name="Suite Teardown" type="teardown">
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20200214 11:35:30.082" endtime="20200214 11:35:31.374"></status>
+<status status="PASS" starttime="20200216 10:58:51.410" endtime="20200216 10:58:56.774"></status>
 </kw>
-<status status="PASS" starttime="20200214 11:35:30.081" endtime="20200214 11:35:31.374"></status>
+<status status="PASS" starttime="20200216 10:58:51.398" endtime="20200216 10:58:56.774"></status>
 </kw>
 <doc>This is a test suite for admin login page</doc>
-<status status="PASS" starttime="20200214 11:34:45.566" endtime="20200214 11:35:31.374"></status>
+<status status="PASS" starttime="20200216 10:58:16.321" endtime="20200216 10:58:56.774"></status>
 </suite>
 <statistics>
 <total>

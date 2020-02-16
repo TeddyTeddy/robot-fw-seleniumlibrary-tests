@@ -1,7 +1,6 @@
 from LibraryLoader import LibraryLoader
 from ExpectedTexts import expected
 from Locators import locator
-from Credentials import credentials
 from ExpectedLinks import links, admin_login_page_url
 import unittest
 
@@ -42,7 +41,7 @@ class AdminLoginPage(unittest.TestCase):
                                                           attribute='value',
                                                           expected=expected['admin_login_page']['login_button_text'])
 
-    def enter_valid_admin_credentials_and_submit(self):
+    def enter_credentials_and_submit(self, username, password):
         """
         Logins as admin user via admin login page. If the login attempt is successful, user is redirected to
         admin main page. This test checks the success of the login attempt by waiting for 'logout' element
@@ -51,9 +50,9 @@ class AdminLoginPage(unittest.TestCase):
         :return: None
         """
         self._loader.sl.input_text(locator=locator['admin_login_page']['username_field'],
-                                   text=credentials['valid_admin']['username'])
+                                   text=username)
         self._loader.sl.input_password(locator=locator['admin_login_page']['password_field'],
-                                       password=credentials['valid_admin']['password'])
+                                       password=password)
         self._loader.sl.click_element(locator=locator['admin_login_page']['login_button'])
 
     def click_on_add_group_button(self):
