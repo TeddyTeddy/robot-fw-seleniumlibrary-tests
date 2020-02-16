@@ -1,3 +1,7 @@
+# This file contains common keywords that can be shared across all test suites under DjangoAdminSiteProject folder
+*** Settings ***
+Resource    ../../../Libraries/Src/CommonLibraryImport.robot
+
 *** Keywords ***
 Add Group With Permissions
     [Arguments]     ${group_name}       ${permissions}

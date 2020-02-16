@@ -1,4 +1,4 @@
 .idea/
-Resources/Credentials.py
-Resources/__pycache__
+Libraries/Src/Credentials.py
+Libraries/Src/__pycache__
 Results/

@@ -1,19 +1,12 @@
 *** Settings ***
 Documentation       This is a test suite for admin login page
 Library             SeleniumLibrary
-Library             ../Resources/AdminLoginPage.py
-Library             ../Resources/AdminMainPage.py
-Library             ../Resources/AddGroupPage.py
-Library             ../Resources/GroupsPage.py
-Library             ../Resources/ConfirmGroupsDeletionsPage.py
-Resource            ../Resources/CommonKeywords.robot
-Variables           ../Resources/CommonVariables.py
-Variables           ../Resources/Credentials.py
+Resource            ../Common/CommonKeywords.robot
 Suite Setup         Suite Setup
 Suite Teardown      Suite Teardown
 
 # To Run:
-# robot  --pythonpath Resources --noncritical failure-expected -d Results/ -v browser:'firefox' Tests/DjangoAdminSiteTestSuite.robot
+# robot  --pythonpath Libraries/Src --noncritical failure-expected -d Results/ -v browser:'firefox' Tests/DjangoAdminSiteProject/DjangoAdminSiteTestSuite/DjangoAdminSiteTestSuite.robot
 
 *** Keywords ***
 Suite Setup
