@@ -113,8 +113,7 @@ class AdminMainPage(unittest.TestCase):
                                                  expected=expected['admin_main_page']['main_title_text'])
 
         # user navigation bar on the upper right of the page
-        # TODO: move dynamic_user_tab_text to ExpectedTexts.py file
-        dynamic_user_tab_text = f"WELCOME, {username.upper()}. VIEW SITE / CHANGE PASSWORD / LOG OUT"
+        dynamic_user_tab_text = expected['admin_main_page']['dynamic_user_tab_text'] % username.upper()
         self._loader.sl.element_text_should_be(locator=locator['admin_main_page']['welcome_user_x'],
                                                expected=dynamic_user_tab_text)
 

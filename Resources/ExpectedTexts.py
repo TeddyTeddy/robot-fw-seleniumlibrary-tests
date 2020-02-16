@@ -7,6 +7,7 @@ expected = {
     },
     'admin_main_page': {
         'main_title_text': 'Django administration',         # on the upper left corner
+        'dynamic_user_tab_text': 'WELCOME, %s. VIEW SITE / CHANGE PASSWORD / LOG OUT',
         'welcome_text': 'WELCOME,',                         # on the upper right corner
         'view_site_text': 'VIEW SITE',                      # on the upper right corner
         'change_password_text': 'CHANGE PASSWORD',          # on the upper right corner
