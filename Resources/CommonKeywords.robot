@@ -1,9 +1,4 @@
 *** Keywords ***
-Login
-    [Arguments]     ${username}     ${password}
-    Enter Credentials and Submit  ${username}     ${password}   # goes to admin_main_page
-
-
 Add Group With Permissions
     [Arguments]     ${group_name}       ${permissions}
     Enter Name For New Group    group_name=${group_name}

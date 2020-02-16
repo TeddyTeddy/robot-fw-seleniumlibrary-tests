@@ -41,7 +41,7 @@ class AdminLoginPage(unittest.TestCase):
                                                           attribute='value',
                                                           expected=expected['admin_login_page']['login_button_text'])
 
-    def enter_credentials_and_submit(self, username, password):
+    def login(self, username, password):
         """
         Logins as admin user via admin login page. If the login attempt is successful, user is redirected to
         admin main page. This test checks the success of the login attempt by waiting for 'logout' element
