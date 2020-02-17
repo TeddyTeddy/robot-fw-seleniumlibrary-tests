@@ -2,6 +2,7 @@
 Documentation       This is a test suite for admin login page
 Library             SeleniumLibrary
 Resource            ../Common/CommonKeywords.robot
+Resource            Resources/DjangoAdminSiteTestSuite_resource.robot
 Suite Setup         Suite Setup
 Suite Teardown      Suite Teardown
 
