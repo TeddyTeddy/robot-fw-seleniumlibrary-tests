@@ -1,10 +1,7 @@
 from LibraryLoader import LibraryLoader
 from ExpectedTexts import expected
 from ExpectedLinks import links, expected_groups_page_url, base_link
-from ExpectedAttributeValues import eav
 from Locators import locator
-from robot.api import logger
-import re
 
 
 class ConfirmGroupsDeletionsPage:
