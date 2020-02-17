@@ -1,4 +1,3 @@
-import unittest
 from LibraryLoader import LibraryLoader
 from ExpectedTexts import expected
 from ExpectedLinks import links, expected_admin_main_page_url
@@ -6,14 +5,13 @@ from Locators import number_of_add_buttons, number_of_change_buttons, locator
 from robot.api import logger
 
 
-class AdminMainPage(unittest.TestCase):
+class AdminMainPage:
     """
     This Robot Library contains keywords operating on the expected_admin_main_page_url
     """
     ROBOT_LIBRARY_SCOPE = 'TEST SUITE'
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(self):
         self._loader = LibraryLoader.get_instance()  # singleton
 
     def go_to_admin_main_page(self):
@@ -32,7 +30,7 @@ class AdminMainPage(unittest.TestCase):
         self._loader.sl.wait_until_element_is_enabled(locator=locator['admin_main_page']['logout'])
         # check the validity of the url on the admin_main_page page
         observed_admin_main_page_url = self._loader.sl.get_location()
-        self.assertEqual(expected_admin_main_page_url, observed_admin_main_page_url)
+        assert expected_admin_main_page_url == observed_admin_main_page_url
 
         # admin_main_page is loaded at this point
         self._verify_texts_on_admin_main_page(username)

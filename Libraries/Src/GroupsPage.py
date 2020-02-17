@@ -1,4 +1,3 @@
-import unittest
 from LibraryLoader import LibraryLoader
 from ExpectedTexts import expected
 from ExpectedLinks import links, expected_groups_page_url, base_link
@@ -8,14 +7,13 @@ from robot.api import logger
 import re
 
 
-class GroupsPage(unittest.TestCase):
+class GroupsPage:
     """
     This Robot Library contains keywords operating on the XXX
     """
     ROBOT_LIBRARY_SCOPE = 'TEST SUITE'
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(self):
         self._loader = LibraryLoader.get_instance()  # singleton
 
     def verify_groups_page_loaded(self, group_name):
@@ -24,7 +22,7 @@ class GroupsPage(unittest.TestCase):
         # groups_page is loaded at this point
         # verify that groups_page url is correct
         observed_groups_page_url = self._loader.sl.get_location()
-        self.assertEqual(expected_groups_page_url, observed_groups_page_url)
+        assert expected_groups_page_url == observed_groups_page_url
 
         self._verify_texts_on_groups_page(group_name)
         self._verify_links_on_groups_page(group_name)
@@ -80,7 +78,7 @@ class GroupsPage(unittest.TestCase):
         observed_y_groups = self._loader.sl.get_text(locator=locator['groups_page']['y_groups'])
         y = re.match('\\d+', observed_y_groups).group()
         logger.info(f'Observed {y} groups')
-        self.assertTrue(y in observed_x_of_y_selected)
+        assert y in observed_x_of_y_selected
 
     def _verify_links_on_groups_page(self, group_name):
         self._loader.sl.element_attribute_value_should_be(locator=locator['groups_page']['home_link'],
@@ -109,9 +107,9 @@ class GroupsPage(unittest.TestCase):
         locator_formatter = locator['groups_page']['generic_group_element'] % group_name
         group_link = self._loader.sl.get_element_attribute(locator=locator_formatter, attribute='href')
         # TODO: Do the below checks more efficiently with RegEx check when txt2re.com is up again
-        self.assertTrue(base_link in group_link)
-        self.assertTrue('/admin/auth/group/' in group_link)
-        self.assertTrue('/change/' in group_link)
+        assert base_link in group_link
+        assert '/admin/auth/group/' in group_link
+        assert '/change/' in group_link
 
     def verify_group_added(self, group_name):
         # https://stackoverflow.com/questions/4302166/format-string-dynamically

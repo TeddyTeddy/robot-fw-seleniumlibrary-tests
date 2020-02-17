@@ -1,4 +1,3 @@
-import unittest
 from LibraryLoader import LibraryLoader
 from ExpectedTexts import expected
 from ExpectedLinks import links, expected_add_group_page_url
@@ -7,14 +6,13 @@ from Locators import locator
 from robot.api import logger
 
 
-class AddGroupPage(unittest.TestCase):
+class AddGroupPage:
     """
     This Robot Library contains keywords operating on the expected_admin_main_page_url
     """
     ROBOT_LIBRARY_SCOPE = 'TEST SUITE'
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(self):
         self._loader = LibraryLoader.get_instance()  # singleton
 
     def verify_add_group_page(self):
@@ -30,7 +28,7 @@ class AddGroupPage(unittest.TestCase):
 
         # check the validity of the url on the add_group_page
         observed_add_group_page_url = self._loader.sl.get_location()
-        self.assertEqual(observed_add_group_page_url, expected_add_group_page_url)
+        assert observed_add_group_page_url == expected_add_group_page_url
 
         # at this point, the add_group_page is loaded
         self._verify_texts_on_add_group_page()
@@ -210,7 +208,7 @@ class AddGroupPage(unittest.TestCase):
         permission_list_set = set(permission_list)
         logger.info(chosen_permissions_set)
         logger.info(permission_list_set)
-        self.assertTrue(chosen_permissions_set.issuperset(permission_list_set))
+        assert chosen_permissions_set.issuperset(permission_list_set)
 
     def clear_available_permissions_filter(self):
         self._loader.sl.clear_element_text(locator=locator['add_group_page']['input_permission_field'])

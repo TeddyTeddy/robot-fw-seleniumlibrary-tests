@@ -2,17 +2,15 @@ from LibraryLoader import LibraryLoader
 from ExpectedTexts import expected
 from Locators import locator
 from ExpectedLinks import links, admin_login_page_url
-import unittest
 
 
-class AdminLoginPage(unittest.TestCase):
+class AdminLoginPage:
     """
     This Robot Library contains keywords operating on the admin_login_page_url
     """
     ROBOT_LIBRARY_SCOPE = 'TEST SUITE'
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(self):
         self._loader = LibraryLoader.get_instance()  # singleton
 
     def go_to_admin_login_page(self):
