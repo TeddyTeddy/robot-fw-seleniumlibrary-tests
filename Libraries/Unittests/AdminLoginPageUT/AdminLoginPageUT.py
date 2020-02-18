@@ -7,7 +7,7 @@ from Credentials import DICT__CREDENTIALS
 from AdminLoginPage import AdminLoginPage
 
 
-class AdminLoginPageTest(unittest.TestCase):
+class AdminLoginPageUT(unittest.TestCase):
     def setUp(self) -> None:
         LibraryLoaderStub.mock_library_loader_and_selenium_library()
         self._admin_login_page = AdminLoginPage()
