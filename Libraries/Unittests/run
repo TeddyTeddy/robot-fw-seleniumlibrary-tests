@@ -1,0 +1,2 @@
+export PYTHONPATH=$PYTHONPATH:/home/hakan/Python/Robot/robot-fw-seleniumlibrary-tests/Libraries/Unittests/Common/:/home/hakan/Python/Robot/robot-fw-seleniumlibrary-tests/Libraries/Src/
+python AdminLoginPageUT/AdminLoginPageUnitTests.py

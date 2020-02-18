@@ -2,3 +2,4 @@
 Libraries/Src/Credentials.py
 Libraries/Src/__pycache__
 Results/
+Libraries/Unittests/Common/__pycache__/

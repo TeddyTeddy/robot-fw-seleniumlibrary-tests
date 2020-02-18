@@ -1,9 +1,5 @@
 import unittest
 from mockito import unstub, verify
-
-from AppendAbsSrcPathToSysPath import grab_modules_under_test
-grab_modules_under_test()  # needs to be called first so that imports below will succeed
-
 from LibraryLoader import LibraryLoader
 import LibraryLoaderStub
 from Locators import locator
