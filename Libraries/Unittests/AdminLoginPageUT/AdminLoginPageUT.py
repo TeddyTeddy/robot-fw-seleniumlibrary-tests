@@ -9,7 +9,7 @@ from AdminLoginPage import AdminLoginPage
 
 class AdminLoginPageUT(unittest.TestCase):
     def setUp(self) -> None:
-        LibraryLoaderStub.mock_library_loader_and_selenium_library()
+        LibraryLoaderStub.configure_mock_library_loader()
         self._admin_login_page = AdminLoginPage()
 
     def test_login(self):
