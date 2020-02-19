@@ -5,3 +5,5 @@ Results/
 Libraries/Unittests/Common/__pycache__/
 Libraries/Unittests/AdminLoginPageUT/__pycache__/*
 Libraries/Unittests/needed_abs_directories.txt
+Libraries/Unittests/.coverage
+Libraries/Unittests/htmlcov
