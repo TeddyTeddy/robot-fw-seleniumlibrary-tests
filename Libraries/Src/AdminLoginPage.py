@@ -53,10 +53,4 @@ class AdminLoginPage:
                                        password=password)
         self._loader.sl.click_element(locator=locator['admin_login_page']['login_button'])
 
-    def click_on_add_group_button(self):
-        """
-        In admin_main_page, it clicks on add_group button, once redirected to the add_group_page
-        :return None
-        """
-        self._loader.sl.click_link(locator=locator['admin_main_page']['add_group'])
 

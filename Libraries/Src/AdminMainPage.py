@@ -158,4 +158,9 @@ class AdminMainPage:
         self._loader.sl.element_text_should_be(locator=locator['admin_main_page']['my_actions'],
                                                expected=expected['admin_main_page']['my_actions_text'])
 
-
+    def click_on_add_group_button(self):
+        """
+        In admin_main_page, it clicks on add_group button, once redirected to the add_group_page
+        :return None
+        """
+        self._loader.sl.click_link(locator=locator['admin_main_page']['add_group'])
