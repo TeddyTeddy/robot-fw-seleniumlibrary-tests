@@ -6,4 +6,5 @@ python fetch_needed_directories.py
 PYTHONPATH="$(grep -v '*' needed_abs_directories.txt)"
 export PYTHONPATH
 coverage run --branch AdminLoginPageUT/AdminLoginPageUT.py
+coverage run --branch -a AdminMainPageUT/AdminMainPageUT.py
 coverage html

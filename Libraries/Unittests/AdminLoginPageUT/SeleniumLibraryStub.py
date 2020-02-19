@@ -45,7 +45,6 @@ def _configure_mock_calls_in_login(sl):
     :param sl: the mocked selenium library object, to be used by AdminLoginPage
     :return: None
     """
-    print('calling _configure_mock_calls_in_login()')
     when(sl).input_text(locator=locator['admin_login_page']['username_field'],
                         text=DICT__CREDENTIALS['valid_admin']['username']).thenReturn(None)
 
