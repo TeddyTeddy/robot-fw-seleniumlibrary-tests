@@ -17,7 +17,7 @@ if __name__ == '__main__':
             result = os.environ['PYTHONPATH'] + ':' + result
     else:
         pass
-    file = open('needed_abs_directories.txt', 'w+')
+    file = open('pythonpath.txt', 'w+')
     file.write(result)
     file.close()
 
