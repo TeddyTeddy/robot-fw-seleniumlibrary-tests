@@ -3,8 +3,7 @@
 # https://www.devdungeon.com/content/python-import-syspath-and-pythonpath-tutorial
 # Note that if you have multiple paths in PYTHONPATH, they are seperated by ':' character
 python fetch_needed_directories.py
-PYTHONPATH_EXTENTION="$(grep -v '*' needed_abs_directories.txt)"
-PYTHONPATH=$PYTHONPATH:$PYTHONPATH_EXTENTION
+PYTHONPATH="$(grep -v '*' needed_abs_directories.txt)"
 export PYTHONPATH
 coverage run --branch AdminLoginPageUT/AdminLoginPageUT.py
 coverage html
