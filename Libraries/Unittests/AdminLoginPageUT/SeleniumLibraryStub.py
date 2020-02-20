@@ -4,12 +4,13 @@ from Locators import locator
 from ExpectedLinks import admin_login_page_url
 from ExpectedTexts import expected
 
+
 def get_mocked_sl(method_under_test):
     # sl stands for selenium library
     sl = mock(strict=True)     # every un-configured, unexpected call on sl will raise an exception
-    if method_under_test is 'go_to_admin_login_page':
+    if method_under_test == 'go_to_admin_login_page':
         _configure_mock_calls_in_go_to_admin_login_page(sl)
-    elif method_under_test is 'login':
+    elif method_under_test == 'login':
         _configure_mock_calls_in_login(sl)
     else:
         raise AssertionError(f'method_under_test is unknown: {method_under_test}')   # invalid method_under_test
