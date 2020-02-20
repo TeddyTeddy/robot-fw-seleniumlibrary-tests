@@ -7,4 +7,5 @@ PYTHONPATH="$(grep -v '*' pythonpath.txt)"
 export PYTHONPATH
 coverage run --branch AdminLoginPageUT/AdminLoginPageUT.py
 coverage run --branch -a AdminMainPageUT/AdminMainPageUT.py
+coverage run --branch -a AddGroupPageUT/AddGroupPageUT.py
 coverage html
