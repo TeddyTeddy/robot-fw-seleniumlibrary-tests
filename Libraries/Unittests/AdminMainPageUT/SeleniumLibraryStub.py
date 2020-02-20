@@ -8,11 +8,11 @@ from ExpectedTexts import expected
 def get_mocked_sl(method_under_test):
     # sl stands for selenium library
     sl = mock(strict=True)     # every un-configured, unexpected call on sl will raise an exception
-    if method_under_test is 'go_to_admin_main_page':
+    if method_under_test == 'go_to_admin_main_page':
         _configure_mock_calls_in_go_to_admin_main_page(sl)
-    elif method_under_test is 'verify_admin_main_page':
+    elif method_under_test == 'verify_admin_main_page':
         _configure_mock_calls_in_verify_admin_main_page(sl)
-    elif method_under_test is 'click_on_add_group_button':
+    elif method_under_test == 'click_on_add_group_button':
         _configure_mock_calls_in_click_on_add_group_button(sl)
     else:
         raise AssertionError(f'method_under_test is unknown: {method_under_test}')   # invalid method_under_test
