@@ -8,7 +8,7 @@ import re
 
 class GroupsPage:
     """
-    This Robot Library contains keywords operating on the XXX
+    This Robot Library contains keywords operating on groups_page
     """
     ROBOT_LIBRARY_SCOPE = 'TEST SUITE'
 

@@ -7,6 +7,7 @@ Libraries/Unittests/AdminLoginPageUT/__pycache__/*
 Libraries/Unittests/AdminMainPageUT/__pycache__/*
 Libraries/Unittests/AddGroupPageUT/__pycache__/*
 Libraries/Unittests/ConfirmGroupsDeletionsPageUT/__pycache__/*
+Libraries/Unittests/GroupsPageUT/__pycache__/*
 Libraries/Unittests/pythonpath.txt
 Libraries/Unittests/.coverage
 Libraries/Unittests/htmlcov
