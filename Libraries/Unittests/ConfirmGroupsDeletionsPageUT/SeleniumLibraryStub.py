@@ -4,21 +4,7 @@ from ExpectedLinks import links, expected_groups_page_url, base_link
 from ExpectedTexts import expected
 
 
-def get_mocked_sl(method_under_test):
-    # sl stands for selenium library
-    sl = mock(strict=True)     # every un-configured, unexpected call on sl will raise an exception
-    if method_under_test == 'verify_confirm_group_deletions_page':
-        # In ConfirmGroupsDeletionsPageUT, in do_test_verify_confirm_group_deletions_page(),
-        # call configure_mock_calls_in_go_to_admin_main_page()
-        pass
-    elif method_under_test == 'press_confirm_button':
-        _configure_mock_calls_in_press_confirm_button(sl)
-    else:
-        raise AssertionError(f'method_under_test is unknown: {method_under_test}')   # invalid method_under_test
-    return sl
-
-
-def _configure_mock_calls_in_press_confirm_button(sl):
+def configure_mock_calls_in_press_confirm_button(sl):
     when(sl).click_element(
         locator=locator['confirm_groups_deletions_page']['confirm_deletion_button']
     ).thenReturn(None)

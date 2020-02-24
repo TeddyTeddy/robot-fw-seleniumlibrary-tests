@@ -5,13 +5,15 @@ import LibraryLoaderStub
 from Locators import locator, number_of_add_buttons, number_of_change_buttons
 from ConfirmGroupsDeletionsPage import ConfirmGroupsDeletionsPage     # class under test (CUT)
 from SeleniumLibraryStub import configure_mock_calls_in_go_to_admin_main_page
+from SeleniumLibraryStub import configure_mock_calls_in_press_confirm_button
 from ExpectedLinks import links
 from ExpectedTexts import expected
 
 
 class ConfirmGroupsDeletionsPageUT(unittest.TestCase):
     def setUp(self) -> None:  # before running an individual test case
-        pass
+        # instantiate a mock LibraryLoader, which returns a mock sl
+        LibraryLoaderStub.configure_mock_library_loader()
 
     def tearDown(self) -> None:  # after running an individual test case
         unstub()
@@ -19,7 +21,6 @@ class ConfirmGroupsDeletionsPageUT(unittest.TestCase):
     @staticmethod
     def do_test_verify_confirm_group_deletions_page(group_name):
         # configure the mock selenium library for verify_confirm_group_deletions_page()'s calls
-        LibraryLoaderStub.configure_mock_library_loader(method_under_test='verify_confirm_group_deletions_page')
         configure_mock_calls_in_go_to_admin_main_page(
             sl=LibraryLoader.get_instance().sl,
             group_name=group_name
@@ -118,11 +119,15 @@ class ConfirmGroupsDeletionsPageUT(unittest.TestCase):
 
     def test_verify_confirm_group_deletions_page(self):
         ConfirmGroupsDeletionsPageUT.do_test_verify_confirm_group_deletions_page(group_name='blog_editors')
+        self.tearDown()
+
+        self.setUp()
         ConfirmGroupsDeletionsPageUT.do_test_verify_confirm_group_deletions_page(group_name='group_editors')
 
     def test_press_confirm_button(self):
         # configure the mock selenium library for press_confirm_button()'s calls
-        LibraryLoaderStub.configure_mock_library_loader(method_under_test='press_confirm_button')
+        configure_mock_calls_in_press_confirm_button(sl=LibraryLoader.get_instance().sl)
+
         # CUT gets magically the mock instances (i.e. _loader & sl)
         confirm_group_deletions_page = ConfirmGroupsDeletionsPage()
 
