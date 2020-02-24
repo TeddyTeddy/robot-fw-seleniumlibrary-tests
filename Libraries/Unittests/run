@@ -6,7 +6,7 @@ python setup_pythonpath.py
 PYTHONPATH="$(grep -v '*' pythonpath.txt)"
 export PYTHONPATH
 coverage run --branch AdminLoginPageUT/AdminLoginPageUT.py
-#coverage run --branch -a AdminMainPageUT/AdminMainPageUT.py
+coverage run --branch -a AdminMainPageUT/AdminMainPageUT.py
 coverage run --branch -a AddGroupPageUT/AddGroupPageUT.py
 #coverage run --branch -a ConfirmGroupsDeletionsPageUT/ConfirmGroupsDeletionsPageUT.py
 #coverage run --branch -a GroupsPageUT/GroupsPageUT.py

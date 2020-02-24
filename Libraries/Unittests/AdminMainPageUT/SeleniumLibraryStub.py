@@ -5,25 +5,11 @@ from ExpectedLinks import expected_admin_main_page_url, links
 from ExpectedTexts import expected
 
 
-def get_mocked_sl(method_under_test):
-    # sl stands for selenium library
-    sl = mock(strict=True)     # every un-configured, unexpected call on sl will raise an exception
-    if method_under_test == 'go_to_admin_main_page':
-        _configure_mock_calls_in_go_to_admin_main_page(sl)
-    elif method_under_test == 'verify_admin_main_page':
-        _configure_mock_calls_in_verify_admin_main_page(sl)
-    elif method_under_test == 'click_on_add_group_button':
-        _configure_mock_calls_in_click_on_add_group_button(sl)
-    else:
-        raise AssertionError(f'method_under_test is unknown: {method_under_test}')   # invalid method_under_test
-    return sl
-
-
-def _configure_mock_calls_in_go_to_admin_main_page(sl):
+def configure_mock_calls_in_go_to_admin_main_page(sl):
     when(sl).go_to(expected_admin_main_page_url).thenReturn(None)
 
 
-def _configure_mock_calls_in_verify_admin_main_page(sl):
+def configure_mock_calls_in_verify_admin_main_page(sl):
     when(sl).wait_until_element_is_enabled(locator=locator['admin_main_page']['logout']).thenReturn(None)
     when(sl).get_location().thenReturn(expected_admin_main_page_url)
     _configure_mock_calls_in_verify_texts_on_admin_main_page(sl, username=DICT__CREDENTIALS['valid_admin']['username'])
@@ -207,5 +193,5 @@ def _configure_mock_calls_in_verify_links_on_admin_main_page(sl):
     ).thenReturn(None)
 
 
-def _configure_mock_calls_in_click_on_add_group_button(sl):
+def configure_mock_calls_in_click_on_add_group_button(sl):
     when(sl).click_link(locator=locator['admin_main_page']['add_group']).thenReturn(None)

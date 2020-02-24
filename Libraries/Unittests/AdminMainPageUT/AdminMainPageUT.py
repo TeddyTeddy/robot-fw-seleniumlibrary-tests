@@ -2,6 +2,9 @@ import unittest
 from mockito import unstub, verify
 from LibraryLoader import LibraryLoader
 import LibraryLoaderStub
+from SeleniumLibraryStub import configure_mock_calls_in_go_to_admin_main_page
+from SeleniumLibraryStub import configure_mock_calls_in_verify_admin_main_page
+from SeleniumLibraryStub import configure_mock_calls_in_click_on_add_group_button
 from Locators import locator, number_of_add_buttons, number_of_change_buttons
 from Credentials import DICT__CREDENTIALS
 from AdminMainPage import AdminMainPage     # class under test (CUT)
@@ -11,14 +14,16 @@ from ExpectedTexts import expected
 
 class AdminMainPageUT(unittest.TestCase):
     def setUp(self) -> None:  # before running an individual test case
-        pass
+        # instantiate a mock LibraryLoader, which returns a mock sl
+        LibraryLoaderStub.configure_mock_library_loader()
 
     def tearDown(self) -> None:  # after running an individual test case
         unstub()
 
     def test_go_to_admin_main_page(self):
-        # configure the mock selenium library for go_to_admin_login_page()'s calls
-        LibraryLoaderStub.configure_mock_library_loader(method_under_test='go_to_admin_main_page')
+        # configure the mock selenium library for go_to_admin_main_page()'s calls
+        configure_mock_calls_in_go_to_admin_main_page(sl=LibraryLoader.get_instance().sl)
+
         # CUT gets magically the mock instances (i.e. _loader & sl)
         admin_main_page = AdminMainPage()
 
@@ -29,8 +34,8 @@ class AdminMainPageUT(unittest.TestCase):
         verify(LibraryLoader.get_instance().sl, times=1).go_to(expected_admin_main_page_url)
 
     def test_verify_admin_main_page(self):
-        # configure the mock selenium library for go_to_admin_login_page()'s calls
-        LibraryLoaderStub.configure_mock_library_loader(method_under_test='verify_admin_main_page')
+        # configure the mock selenium library for verify_admin_main_page()'s calls
+        configure_mock_calls_in_verify_admin_main_page(sl=LibraryLoader.get_instance().sl)
         # CUT gets magically the mock instances (i.e. _loader & sl)
         admin_main_page = AdminMainPage()
 
@@ -217,8 +222,8 @@ class AdminMainPageUT(unittest.TestCase):
         )
 
     def test_click_on_add_group_button(self):
-        # configure the mock selenium library for go_to_admin_login_page()'s calls
-        LibraryLoaderStub.configure_mock_library_loader(method_under_test='click_on_add_group_button')
+        # configure the mock selenium library for click_on_add_group_button()'s calls
+        configure_mock_calls_in_click_on_add_group_button(sl=LibraryLoader.get_instance().sl)
         # CUT gets magically the mock instances (i.e. _loader & sl)
         admin_main_page = AdminMainPage()
 
