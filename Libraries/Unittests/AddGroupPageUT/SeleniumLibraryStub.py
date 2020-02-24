@@ -6,29 +6,6 @@ from ExpectedTexts import expected
 from ExpectedAttributeValues import eav
 
 
-def get_mocked_sl(method_under_test):
-    # sl stands for selenium library
-    sl = mock(strict=True)     # every un-configured, unexpected call on sl will raise an exception
-    if method_under_test == 'verify_add_group_page':
-        _configure_mock_calls_in_verify_add_group_page(sl)
-    elif method_under_test == 'enter_name_for_new_group':
-        # In AddGroupPageUT, in test_enter_name_for_new_group(), call configure_mock_calls_in_enter_name_for_new_group
-        pass
-    elif method_under_test == 'enter_search_term_in_available_permissions_filter':
-        # In AddGroupPageUT, in do_test_enter_search_term_in_available_permissions_filter(), call
-        # configure_mock_calls_in_enter_search_term_in_available_permissions_filter()
-        pass
-    elif method_under_test == 'choose_all_filtered_permissions':
-        configure_mock_calls_in_choose_all_filtered_permissions(sl)
-    elif method_under_test == 'clear_available_permissions_filter':
-        configure_mock_calls_in_clear_available_permissions_filter(sl)
-    elif method_under_test == 'click_on_save_button':
-        configure_mock_calls_in_click_on_save_button(sl)
-    else:
-        raise AssertionError(f'method_under_test is unknown: {method_under_test}')   # invalid method_under_test
-    return sl
-
-
 def configure_mock_calls_in_click_on_save_button(sl):
     when(sl).click_element(locator=locator['add_group_page']['save_button']).thenReturn(None)
 
@@ -97,7 +74,7 @@ def do_get_text_for_available_permissions_dropdown(permission_search_term):
         raise AssertionError(f'What to yield in get_text for "{permission_search_term}"? Implement it here')
 
 
-def _configure_mock_calls_in_verify_add_group_page(sl):
+def configure_mock_calls_in_verify_add_group_page(sl):
     # wait until title element is visible on add_group_page
     when(sl).wait_until_element_is_visible(locator=locator['add_group_page']['title']).thenReturn(None)
 
@@ -205,12 +182,12 @@ def _configure_mock_calls_in_verify_links_on_add_group_page(sl):
     ).thenReturn(None)
 
 
-def configure_mock_calls_in_verify_remove_all_permission_link(sl, permissions_dropdown_text):
+def configure_mock_calls_in_verify_remove_all_permission_link(sl, chosen_permissions_dropdown_text):
     when(sl).get_text(
         locator=locator['add_group_page']['chosen_permissions_dropdown']
-    ).thenReturn(permissions_dropdown_text)
+    ).thenReturn(chosen_permissions_dropdown_text)
 
-    if permissions_dropdown_text:
+    if chosen_permissions_dropdown_text:
         when(sl).element_should_be_enabled(
             locator=locator['add_group_page']['remove_all_permissions_option']
         ).thenReturn(None)

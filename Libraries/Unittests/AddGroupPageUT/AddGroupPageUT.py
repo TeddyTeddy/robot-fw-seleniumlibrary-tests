@@ -6,8 +6,11 @@ from SeleniumLibraryStub import configure_mock_calls_in_verify_remove_all_permis
 from SeleniumLibraryStub import configure_mock_calls_in_enter_name_for_new_group
 from SeleniumLibraryStub import configure_mock_calls_in_enter_search_term_in_available_permissions_filter
 from SeleniumLibraryStub import do_get_text_for_available_permissions_dropdown
+from SeleniumLibraryStub import configure_mock_calls_in_clear_available_permissions_filter
+from SeleniumLibraryStub import configure_mock_calls_in_click_on_save_button
+from SeleniumLibraryStub import configure_mock_calls_in_choose_all_filtered_permissions
+from SeleniumLibraryStub import configure_mock_calls_in_verify_add_group_page
 from Locators import locator, number_of_add_buttons, number_of_change_buttons
-from Credentials import DICT__CREDENTIALS
 from AddGroupPage import AddGroupPage     # class under test (CUT)
 from ExpectedLinks import expected_add_group_page_url, links
 from ExpectedTexts import expected
@@ -16,18 +19,19 @@ from ExpectedAttributeValues import eav
 
 class AddGroupPageUT(unittest.TestCase):
     def setUp(self) -> None:  # before running an individual test case
-        pass
+        # instantiate a mock LibraryLoader, which returns a mock sl
+        LibraryLoaderStub.configure_mock_library_loader()
 
     def tearDown(self) -> None:  # after running an individual test case
         unstub()
 
     @staticmethod
-    def do_test_verify_add_group_page(permissions_dropdown_text):
+    def do_test_verify_add_group_page(chosen_permissions_dropdown_text):
         # configure the mock selenium library for verify_add_group_page()'s calls
-        LibraryLoaderStub.configure_mock_library_loader(method_under_test='verify_add_group_page')
+        configure_mock_calls_in_verify_add_group_page(sl=LibraryLoader.get_instance().sl)
         configure_mock_calls_in_verify_remove_all_permission_link(
             LibraryLoader.get_instance().sl,
-            permissions_dropdown_text=permissions_dropdown_text)
+            chosen_permissions_dropdown_text=chosen_permissions_dropdown_text)
 
         # CUT gets magically the mock instances (i.e. _loader & sl)
         add_group_page = AddGroupPage()
@@ -39,7 +43,7 @@ class AddGroupPageUT(unittest.TestCase):
         AddGroupPageUT.do_verify_mock_calls_in_verify_texts_on_add_group_page()
         AddGroupPageUT.do_verify_mock_calls_in_verify_links_on_add_group_page()
         AddGroupPageUT.do_verify_mock_calls_in_verify_remove_all_permission_link(
-            permissions_dropdown_text=permissions_dropdown_text)
+            chosen_permissions_dropdown_text=chosen_permissions_dropdown_text)
         AddGroupPageUT.do_verify_mock_calls_in_verify_the_buttons_on_add_group_page()
 
     @staticmethod
@@ -138,12 +142,12 @@ class AddGroupPageUT(unittest.TestCase):
         )
 
     @staticmethod
-    def do_verify_mock_calls_in_verify_remove_all_permission_link(permissions_dropdown_text):
+    def do_verify_mock_calls_in_verify_remove_all_permission_link(chosen_permissions_dropdown_text):
         verify(LibraryLoader.get_instance().sl, times=1).get_text(
             locator=locator['add_group_page']['chosen_permissions_dropdown']
         )
 
-        if permissions_dropdown_text:
+        if chosen_permissions_dropdown_text:
             verify(LibraryLoader.get_instance().sl, times=1).element_should_be_enabled(
                 locator=locator['add_group_page']['remove_all_permissions_option']
             )
@@ -187,15 +191,17 @@ class AddGroupPageUT(unittest.TestCase):
         )
         
     def test_verify_add_group_page(self):
+        # with permissions_drowdown_text is non empty string, "Remove all" button should be active
         AddGroupPageUT.do_test_verify_add_group_page(
-            permissions_dropdown_text=expected['add_group_page']['auth-group-can_add_group'])
+            chosen_permissions_dropdown_text=expected['add_group_page']['auth-group-can_add_group'])
+        self.tearDown()
 
-        AddGroupPageUT.do_test_verify_add_group_page(permissions_dropdown_text='')
+        self.setUp()
+        AddGroupPageUT.do_test_verify_add_group_page(chosen_permissions_dropdown_text='')
 
     def test_enter_name_for_new_group(self):
         # configure the mock selenium library for enter_name_for_new_group()'s calls
         group_name = 'blog_editors'
-        LibraryLoaderStub.configure_mock_library_loader(method_under_test='enter_name_for_new_group')
         configure_mock_calls_in_enter_name_for_new_group(
             sl=LibraryLoader.get_instance().sl,
             group_name=group_name
@@ -214,12 +220,11 @@ class AddGroupPageUT(unittest.TestCase):
 
     def test_enter_search_term_in_available_permissions_filter(self):
         self.do_test_enter_search_term_in_available_permissions_filter(permission_search_term='blog')
+        self.tearDown()
+        self.setUp()
         self.do_test_enter_search_term_in_available_permissions_filter(permission_search_term='yielding no permissions')
 
     def do_test_enter_search_term_in_available_permissions_filter(self, permission_search_term):
-        # configure the mock selenium library for go_to_admin_login_page()'s calls
-        LibraryLoaderStub.configure_mock_library_loader(
-            method_under_test='enter_search_term_in_available_permissions_filter')
         configure_mock_calls_in_enter_search_term_in_available_permissions_filter(
             sl=LibraryLoader.get_instance().sl,
             permission_search_term=permission_search_term
@@ -247,8 +252,9 @@ class AddGroupPageUT(unittest.TestCase):
 
     def test_choose_all_filtered_permissions(self):
         # configure the mock selenium library for choose_all_filtered_permissions()'s calls
-        LibraryLoaderStub.configure_mock_library_loader(
-            method_under_test='choose_all_filtered_permissions')
+        configure_mock_calls_in_choose_all_filtered_permissions(
+            sl=LibraryLoader.get_instance().sl,
+        )
 
         # CUT gets magically the mock instances (i.e. _loader & sl)
         add_group_page = AddGroupPage()
@@ -277,11 +283,9 @@ class AddGroupPageUT(unittest.TestCase):
         for element in LibraryLoader.get_instance().sl.chosen_permission_elements:
             verify(LibraryLoader.get_instance().sl, times=1).get_text(element)
 
-
     def test_clear_available_permissions_filter(self):
         # configure the mock selenium library for clear_available_permissions_filter()'s calls
-        LibraryLoaderStub.configure_mock_library_loader(
-            method_under_test='clear_available_permissions_filter')
+        configure_mock_calls_in_clear_available_permissions_filter(LibraryLoader.get_instance().sl)
 
         # CUT gets magically the mock instances (i.e. _loader & sl)
         add_group_page = AddGroupPage()
@@ -296,8 +300,7 @@ class AddGroupPageUT(unittest.TestCase):
 
     def test_click_on_save_button(self):
         # configure the mock selenium library for click_on_save_button()'s calls
-        LibraryLoaderStub.configure_mock_library_loader(
-            method_under_test='click_on_save_button')
+        configure_mock_calls_in_click_on_save_button(LibraryLoader.get_instance().sl)
 
         # CUT gets magically the mock instances (i.e. _loader & sl)
         add_group_page = AddGroupPage()
