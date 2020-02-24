@@ -4,35 +4,11 @@ from ExpectedLinks import links, expected_groups_page_url, base_link
 from ExpectedTexts import expected
 
 
-def get_mocked_sl(method_under_test):
-    # sl stands for selenium library
-    sl = mock(strict=True)     # every un-configured, unexpected call on sl will raise an exception
-    if method_under_test == 'verify_groups_page_loaded':
-        # in GroupsPageUT, in test_verify_groups_page_loaded(), call
-        # configure_mock_calls_in_verify_groups_page_loaded()
-        pass
-    elif method_under_test == 'verify_group_added':
-        # In GroupsPageUT, in do_test_verify_group_added(), call
-        # configure_mock_calls_in_verify_group_added()
-        pass
-    elif method_under_test == 'select_checkbox_for_group':
-        # In GroupsPageUT, in do_test_select_checkbox_for_group(), call
-        # configure_mock_calls_in_select_checkbox_for_group()
-        pass
-    elif method_under_test == 'select_delete_selected_groups_dropdown':
-        _configure_mock_calls_in_select_delete_selected_groups_dropdown(sl)
-    elif method_under_test == 'press_go':
-        _configure_mock_calls_in_press_go(sl)
-    else:
-        raise AssertionError(f'method_under_test is unknown: {method_under_test}')   # invalid method_under_test
-    return sl
-
-
-def _configure_mock_calls_in_press_go(sl):
+def configure_mock_calls_in_press_go(sl):
     when(sl).click_element(locator=locator['groups_page']['go_button']).thenReturn(None)
 
 
-def _configure_mock_calls_in_select_delete_selected_groups_dropdown(sl):
+def configure_mock_calls_in_select_delete_selected_groups_dropdown(sl):
     when(sl).click_element(locator=locator['groups_page']['delete_selected_groups_option']).thenReturn(None)
 
 

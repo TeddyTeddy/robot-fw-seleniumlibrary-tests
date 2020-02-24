@@ -5,6 +5,8 @@ import LibraryLoaderStub
 from SeleniumLibraryStub import configure_mock_calls_in_verify_groups_page_loaded
 from SeleniumLibraryStub import configure_mock_calls_in_verify_group_added
 from SeleniumLibraryStub import configure_mock_calls_in_select_checkbox_for_group
+from SeleniumLibraryStub import configure_mock_calls_in_select_delete_selected_groups_dropdown
+from SeleniumLibraryStub import configure_mock_calls_in_press_go
 from Locators import locator
 from GroupsPage import GroupsPage     # class under test (CUT)
 from ExpectedLinks import links, base_link
@@ -13,7 +15,8 @@ from ExpectedTexts import expected
 
 class GroupsPageUT(unittest.TestCase):
     def setUp(self) -> None:  # before running an individual test case
-        pass
+        # instantiate a mock LibraryLoader, which returns a mock sl
+        LibraryLoaderStub.configure_mock_library_loader()
 
     def tearDown(self) -> None:  # after running an individual test case
         unstub()
@@ -112,7 +115,6 @@ class GroupsPageUT(unittest.TestCase):
     @staticmethod
     def do_test_verify_groups_page_loaded(group_name):
         # configure the mock selenium library for verify_groups_page_loaded()'s calls
-        LibraryLoaderStub.configure_mock_library_loader(method_under_test='verify_groups_page_loaded')
         configure_mock_calls_in_verify_groups_page_loaded(
             sl=LibraryLoader.get_instance().sl,
             group_name=group_name
@@ -135,12 +137,14 @@ class GroupsPageUT(unittest.TestCase):
 
     def test_verify_groups_page_loaded(self):
         GroupsPageUT.do_test_verify_groups_page_loaded(group_name='blog_editors')
+        self.tearDown()
+
+        self.setUp()
         GroupsPageUT.do_test_verify_groups_page_loaded(group_name='group_editors')
 
     @staticmethod
     def do_test_verify_group_added(group_name):
         # configure the mock selenium library for verify_group_added()'s calls
-        LibraryLoaderStub.configure_mock_library_loader(method_under_test='verify_group_added')
         configure_mock_calls_in_verify_group_added(
             sl=LibraryLoader.get_instance().sl,
             group_name=group_name
@@ -167,7 +171,6 @@ class GroupsPageUT(unittest.TestCase):
     @staticmethod
     def do_test_select_checkbox_for_group(group_name):
         # configure the mock selenium library for select_checkbox_for_group()'s calls
-        LibraryLoaderStub.configure_mock_library_loader(method_under_test='select_checkbox_for_group')
         configure_mock_calls_in_select_checkbox_for_group(
             sl=LibraryLoader.get_instance().sl,
             group_name=group_name
@@ -189,7 +192,7 @@ class GroupsPageUT(unittest.TestCase):
 
     def test_select_delete_selected_groups_dropdown(self):
         # configure the mock selenium library for select_delete_selected_groups_dropdown()'s calls
-        LibraryLoaderStub.configure_mock_library_loader(method_under_test='select_delete_selected_groups_dropdown')
+        configure_mock_calls_in_select_delete_selected_groups_dropdown(sl=LibraryLoader.get_instance().sl)
         # CUT gets magically the mock instances (i.e. _loader & sl)
         groups_page = GroupsPage()
 
@@ -203,7 +206,8 @@ class GroupsPageUT(unittest.TestCase):
 
     def test_press_go(self):
         # configure the mock selenium library for select_delete_selected_groups_dropdown()'s calls
-        LibraryLoaderStub.configure_mock_library_loader(method_under_test='press_go')
+        configure_mock_calls_in_press_go(sl=LibraryLoader.get_instance().sl)
+
         # CUT gets magically the mock instances (i.e. _loader & sl)
         groups_page = GroupsPage()
 
