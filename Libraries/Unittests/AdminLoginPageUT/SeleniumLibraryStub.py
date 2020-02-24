@@ -5,19 +5,7 @@ from ExpectedLinks import admin_login_page_url
 from ExpectedTexts import expected
 
 
-def get_mocked_sl(method_under_test):
-    # sl stands for selenium library
-    sl = mock(strict=True)     # every un-configured, unexpected call on sl will raise an exception
-    if method_under_test == 'go_to_admin_login_page':
-        _configure_mock_calls_in_go_to_admin_login_page(sl)
-    elif method_under_test == 'login':
-        _configure_mock_calls_in_login(sl)
-    else:
-        raise AssertionError(f'method_under_test is unknown: {method_under_test}')   # invalid method_under_test
-    return sl
-
-
-def _configure_mock_calls_in_go_to_admin_login_page(sl):
+def configure_mock_calls_in_go_to_admin_login_page(sl):
     when(sl).go_to(url=admin_login_page_url).thenReturn(None)
     when(sl).wait_until_element_is_enabled(locator=locator['admin_login_page']['login_button']).thenReturn(None)
     _configure_mock_calls_in_verify_texts_on_admin_login_page(sl)
@@ -40,7 +28,7 @@ def _configure_mock_calls_in_verify_texts_on_admin_login_page(sl):
         expected=expected['admin_login_page']['login_button_text']).thenReturn(None)
 
 
-def _configure_mock_calls_in_login(sl):
+def configure_mock_calls_in_login(sl):
     """
     This method configures the stub calls in login() instance method in AdminLoginPage class.
     :param sl: the mocked selenium library object, to be used by AdminLoginPage

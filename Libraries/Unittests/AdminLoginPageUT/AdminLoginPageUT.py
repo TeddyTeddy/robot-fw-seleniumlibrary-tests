@@ -2,6 +2,8 @@ import unittest
 from mockito import unstub, verify
 from LibraryLoader import LibraryLoader
 import LibraryLoaderStub
+from SeleniumLibraryStub import configure_mock_calls_in_go_to_admin_login_page
+from SeleniumLibraryStub import configure_mock_calls_in_login
 from Locators import locator
 from Credentials import DICT__CREDENTIALS
 from AdminLoginPage import AdminLoginPage
@@ -11,14 +13,17 @@ from ExpectedTexts import expected
 
 class AdminLoginPageUT(unittest.TestCase):
     def setUp(self) -> None:  # before running an individual test case
-        pass
+        # instantiate a mock LibraryLoader, which returns a mock sl
+        LibraryLoaderStub.configure_mock_library_loader()
 
     def tearDown(self) -> None:  # after running an individual test case
         unstub()
 
     def test_go_to_admin_login_page(self):
         # configure the mock selenium library for go_to_admin_login_page()'s calls
-        LibraryLoaderStub.configure_mock_library_loader(method_under_test='go_to_admin_login_page')
+        configure_mock_calls_in_go_to_admin_login_page(
+            sl=LibraryLoader.get_instance().sl
+        )
         # CUT gets magically the mock instances (i.e. _loader & sl)
         admin_login_page = AdminLoginPage()
 
@@ -49,8 +54,9 @@ class AdminLoginPageUT(unittest.TestCase):
             expected=expected['admin_login_page']['login_button_text'])
 
     def test_login(self):
-        # configure the mock selenium library for login()'s calls
-        LibraryLoaderStub.configure_mock_library_loader(method_under_test='login')
+        configure_mock_calls_in_login(
+            sl=LibraryLoader.get_instance().sl
+        )
         # CUT gets magically the mock instances (i.e. _loader & sl)
         admin_login_page = AdminLoginPage()
 
