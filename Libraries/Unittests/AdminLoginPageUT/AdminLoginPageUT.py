@@ -1,5 +1,5 @@
 import unittest
-from mockito import unstub, verify
+from mockito import unstub, verify, expect, verifyNoUnwantedInteractions
 from LibraryLoader import LibraryLoader
 import LibraryLoaderStub
 from SeleniumLibraryStub import configure_mock_calls_in_go_to_admin_login_page
@@ -20,40 +20,40 @@ class AdminLoginPageUT(unittest.TestCase):
         unstub()
 
     def test_go_to_admin_login_page(self):
-        # configure the mock selenium library for go_to_admin_login_page()'s calls
-        configure_mock_calls_in_go_to_admin_login_page(
-            sl=LibraryLoader.get_instance().sl
-        )
+        # in method under test, stub the expected function calls with correct arguments
+        expect(LibraryLoader.get_instance().sl, times=1).go_to(url=admin_login_page_url)
+
+        expect(LibraryLoader.get_instance().sl, times=1).wait_until_element_is_enabled(
+            locator=locator['admin_login_page']['login_button'])
+
+        expect(LibraryLoader.get_instance().sl, times=1).element_text_should_be(
+            locator=locator['admin_login_page']['title'],
+            expected=expected['admin_login_page']['title_text'])
+
+        expect(LibraryLoader.get_instance().sl, times=1).element_text_should_be(
+            locator=locator['admin_login_page']['username_title'],
+            expected=expected['admin_login_page']['username_text'])
+
+        expect(LibraryLoader.get_instance().sl, times=1).element_text_should_be(
+            locator=locator['admin_login_page']['password_title'],
+            expected=expected['admin_login_page']['password_text'])
+
+        expect(LibraryLoader.get_instance().sl, times=1).element_attribute_value_should_be(
+            locator=locator['admin_login_page']['login_button'],
+            attribute='value',
+            expected=expected['admin_login_page']['login_button_text'])
+
         # CUT gets magically the mock instances (i.e. _loader & sl)
         admin_login_page = AdminLoginPage()
 
         # method under test gets called
         admin_login_page.go_to_admin_login_page()
 
-        # verify that correct mock instance sl got called with correct instance methods with correct arguments
-        verify(LibraryLoader.get_instance().sl, times=1).go_to(url=admin_login_page_url)
+        # Verifies that expectations set via expect are met
+        # all registered objects will be checked.
+        verifyNoUnwantedInteractions()
 
-        verify(LibraryLoader.get_instance().sl, times=1).wait_until_element_is_enabled(
-            locator=locator['admin_login_page']['login_button'])
-
-        verify(LibraryLoader.get_instance().sl, times=1).element_text_should_be(
-            locator=locator['admin_login_page']['title'],
-            expected=expected['admin_login_page']['title_text'])
-
-        verify(LibraryLoader.get_instance().sl, times=1).element_text_should_be(
-            locator=locator['admin_login_page']['username_title'],
-            expected=expected['admin_login_page']['username_text'])
-
-        verify(LibraryLoader.get_instance().sl, times=1).element_text_should_be(
-            locator=locator['admin_login_page']['password_title'],
-            expected=expected['admin_login_page']['password_text'])
-
-        verify(LibraryLoader.get_instance().sl, times=1).element_attribute_value_should_be(
-            locator=locator['admin_login_page']['login_button'],
-            attribute='value',
-            expected=expected['admin_login_page']['login_button_text'])
-
-    def test_login(self):
+    def test_login_long_way(self):
         configure_mock_calls_in_login(
             sl=LibraryLoader.get_instance().sl
         )
@@ -75,6 +75,30 @@ class AdminLoginPageUT(unittest.TestCase):
 
         verify(LibraryLoader.get_instance().sl, times=1).click_element(
             locator=locator['admin_login_page']['login_button'])
+
+    def test_login_short_way(self):
+        # stub the expected function calls in method under test
+        expect(LibraryLoader.get_instance().sl, times=1).input_text(
+            locator=locator['admin_login_page']['username_field'],
+            text=DICT__CREDENTIALS['valid_admin']['username']).thenReturn(None)
+
+        expect(LibraryLoader.get_instance().sl, times=1).input_password(
+            locator=locator['admin_login_page']['password_field'],
+            password=DICT__CREDENTIALS['valid_admin']['password']).thenReturn(None)
+
+        expect(LibraryLoader.get_instance().sl, times=1).click_element(
+            locator=locator['admin_login_page']['login_button']).thenReturn(None)
+
+        # CUT gets magically the mock instances (i.e. _loader & sl)
+        admin_login_page = AdminLoginPage()
+
+        # method under test gets called
+        admin_login_page.login(DICT__CREDENTIALS['valid_admin']['username'],
+                               DICT__CREDENTIALS['valid_admin']['password'])
+
+        # Verifies that expectations set via expect are met
+        # all registered objects will be checked.
+        verifyNoUnwantedInteractions()
 
 
 if __name__ == '__main__':

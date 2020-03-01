@@ -60,17 +60,20 @@
     <p id="t6" class="pln"><span class="n"><a href="#t6">6</a></span><span class="t">    <span class="com"># sl stands for selenium library</span>&nbsp;</span><span class="r"></span></p>
     <p id="t7" class="run"><span class="n"><a href="#t7">7</a></span><span class="t">    <span class="nam">sl</span> <span class="op">=</span> <span class="nam">mock</span><span class="op">(</span><span class="nam">strict</span><span class="op">=</span><span class="key">True</span><span class="op">)</span>     <span class="com"># every un-configured, unexpected call on sl will raise an exception</span>&nbsp;</span><span class="r"></span></p>
     <p id="t8" class="pln"><span class="n"><a href="#t8">8</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
-    <p id="t9" class="run"><span class="n"><a href="#t9">9</a></span><span class="t">    <span class="nam">ll</span> <span class="op">=</span> <span class="nam">mock</span><span class="op">(</span><span class="op">{</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t10" class="pln"><span class="n"><a href="#t10">10</a></span><span class="t">        <span class="str">'sl'</span><span class="op">:</span> <span class="nam">sl</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t11" class="pln"><span class="n"><a href="#t11">11</a></span><span class="t">    <span class="op">}</span><span class="op">,</span> <span class="nam">spec</span><span class="op">=</span><span class="nam">LibraryLoader</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t12" class="run"><span class="n"><a href="#t12">12</a></span><span class="t">    <span class="nam">when</span><span class="op">(</span><span class="nam">LibraryLoader</span><span class="op">)</span><span class="op">.</span><span class="nam">get_instance</span><span class="op">(</span><span class="op">)</span><span class="op">.</span><span class="nam">thenReturn</span><span class="op">(</span><span class="nam">ll</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t13" class="pln"><span class="n"><a href="#t13">13</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t9" class="pln"><span class="n"><a href="#t9">9</a></span><span class="t">    <span class="com"># You can also create an empty Mock which is specced against a given spec: spec=LibraryLoader.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t10" class="pln"><span class="n"><a href="#t10">10</a></span><span class="t">    <span class="com"># These mock are by default strict, thus they raise if you want to stub a method, the spec does not implement.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t11" class="pln"><span class="n"><a href="#t11">11</a></span><span class="t">    <span class="com"># Mockito will also match the function signature.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t12" class="run"><span class="n"><a href="#t12">12</a></span><span class="t">    <span class="nam">ll</span> <span class="op">=</span> <span class="nam">mock</span><span class="op">(</span><span class="op">{</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t13" class="pln"><span class="n"><a href="#t13">13</a></span><span class="t">        <span class="str">'sl'</span><span class="op">:</span> <span class="nam">sl</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t14" class="pln"><span class="n"><a href="#t14">14</a></span><span class="t">    <span class="op">}</span><span class="op">,</span> <span class="nam">spec</span><span class="op">=</span><span class="nam">LibraryLoader</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t15" class="run"><span class="n"><a href="#t15">15</a></span><span class="t">    <span class="nam">when</span><span class="op">(</span><span class="nam">LibraryLoader</span><span class="op">)</span><span class="op">.</span><span class="nam">get_instance</span><span class="op">(</span><span class="op">)</span><span class="op">.</span><span class="nam">thenReturn</span><span class="op">(</span><span class="nam">ll</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t16" class="pln"><span class="n"><a href="#t16">16</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
 </div>
 <div id="footer">
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v5.0.3</a>,
-            created at 2020-02-24 12:57
+            created at 2020-03-01 11:49
         </p>
     </div>
 </div>
