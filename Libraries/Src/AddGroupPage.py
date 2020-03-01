@@ -208,6 +208,7 @@ class AddGroupPage:
         permission_list_set = set(permission_list)
         logger.info(chosen_permissions_set)
         logger.info(permission_list_set)
+        # TODO: chosen_permissions == permission_list
         assert chosen_permissions_set.issuperset(permission_list_set)
 
     def clear_available_permissions_filter(self):
