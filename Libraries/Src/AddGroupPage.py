@@ -199,7 +199,8 @@ class AddGroupPage:
         chosen_permissions_dropdown as generic_chosen_permission
         :return:
         """
-        chosen_permission_elements = self._loader.sl.get_webelements(locator=locator['add_group_page']['generic_chosen_permission'])
+        chosen_permission_elements = self._loader.sl.get_webelements(
+            locator=locator['add_group_page']['generic_chosen_permission'])
         chosen_permissions = []
         for element in chosen_permission_elements:
             permission = self._loader.sl.get_text(element)
@@ -208,7 +209,7 @@ class AddGroupPage:
         permission_list_set = set(permission_list)
         logger.info(chosen_permissions_set)
         logger.info(permission_list_set)
-        # TODO: chosen_permissions == permission_list
+        # TODO: sorted(chosen_permissions) == sorted(permission_list) does not work. Why?
         assert chosen_permissions_set.issuperset(permission_list_set)
 
     def clear_available_permissions_filter(self):
