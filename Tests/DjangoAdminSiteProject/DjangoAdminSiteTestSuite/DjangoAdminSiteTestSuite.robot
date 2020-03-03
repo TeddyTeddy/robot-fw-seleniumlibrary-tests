@@ -20,8 +20,8 @@ Suite Teardown
 *** Test Cases ***
 Login As An Admin
     Go To Admin Login Page
-    Login   ${CREDENTIALS.valid_admin.username}     ${CREDENTIALS.valid_admin.password}     # opens admin_main_page
-    Verify Admin Main Page      ${CREDENTIALS.valid_admin.username}
+    Login    ${CREDENTIALS}[valid_admin][username]     ${CREDENTIALS}[valid_admin][password]    # opens admin_main_page
+    Verify Admin Main Page      ${CREDENTIALS}[valid_admin][username]
 
 Create "Blog Editors" Group
     Click On Add Group Button   # opens add_group_page

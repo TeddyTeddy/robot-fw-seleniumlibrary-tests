@@ -2,7 +2,7 @@ import unittest
 from mockito import unstub, verifyNoUnwantedInteractions, expect
 from LibraryLoader import LibraryLoader
 import LibraryLoaderStub
-from Credentials import DICT__CREDENTIALS
+from CommonVariables import get_variables
 from AdminMainPage import AdminMainPage     # class under test (CUT)
 from ExpectedLinks import expected_admin_main_page_url, links
 from ExpectedTexts import expected
@@ -40,7 +40,7 @@ class AdminMainPageUT(unittest.TestCase):
         expect(LibraryLoader.get_instance().sl).get_location().thenReturn(expected_admin_main_page_url)
 
         # configure mock calls in _verify_texts_on_admin_main_page()
-        username=DICT__CREDENTIALS['valid_admin']['username']
+        username=get_variables()['CREDENTIALS']['valid_admin']['username']
         expect(LibraryLoader.get_instance().sl).element_text_should_be(
             locator=locator['admin_main_page']['main_title'],
             expected=expected['admin_main_page']['main_title_text']

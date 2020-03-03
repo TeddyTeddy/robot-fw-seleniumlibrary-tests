@@ -1,5 +1,5 @@
 from mockito import mock, when
-from Credentials import DICT__CREDENTIALS
+from CommonVariables import get_variables
 from Locators import locator
 from ExpectedLinks import admin_login_page_url
 from ExpectedTexts import expected
@@ -35,9 +35,9 @@ def configure_mock_calls_in_login(sl):
     :return: None
     """
     when(sl).input_text(locator=locator['admin_login_page']['username_field'],
-                        text=DICT__CREDENTIALS['valid_admin']['username']).thenReturn(None)
+                        text=get_variables()['CREDENTIALS']['valid_admin']['username']).thenReturn(None)
 
     when(sl).input_password(locator=locator['admin_login_page']['password_field'],
-                            password=DICT__CREDENTIALS['valid_admin']['password']).thenReturn(None)
+                            password=get_variables()['CREDENTIALS']['valid_admin']['password']).thenReturn(None)
 
     when(sl).click_element(locator=locator['admin_login_page']['login_button']).thenReturn(None)
