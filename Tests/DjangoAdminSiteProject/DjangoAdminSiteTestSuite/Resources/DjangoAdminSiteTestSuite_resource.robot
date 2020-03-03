@@ -2,6 +2,13 @@
 Documentation    Keywords available only to DjangoAdminSiteTestSuite.robot
 
 *** Keywords ***
+Suite Setup
+    Open Browser  browser=${BROWSER}
+    Maximize Browser Window
+
+Suite Teardown
+    Close Browser
+
 Add Group With Permissions
     [Arguments]     ${group_name}       ${permissions}
     Enter Name For New Group    group_name=${group_name}

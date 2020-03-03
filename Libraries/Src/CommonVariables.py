@@ -11,7 +11,7 @@ GROUP_EDITORS_PERMISSIONS = [expected['add_group_page']['auth-group-can_add_grou
 
 def get_variables():
     variables = {
-        'BROWSER': 'gc',
+        'BROWSER': 'ff',
         # 'HOST_URL': 'https://glacial-earth-31542.herokuapp.com/admin/login/?next=/admin/',
         'CREDENTIALS': {
                 'valid_admin': {

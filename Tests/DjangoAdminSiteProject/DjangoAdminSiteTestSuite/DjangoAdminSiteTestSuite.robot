@@ -7,15 +7,7 @@ Suite Setup         Suite Setup
 Suite Teardown      Suite Teardown
 
 # To Run:
-# robot  --pythonpath Libraries/Src --noncritical failure-expected -d Results/ -v browser:'firefox' Tests/DjangoAdminSiteProject/DjangoAdminSiteTestSuite/DjangoAdminSiteTestSuite.robot
-
-*** Keywords ***
-Suite Setup
-    Open Browser  browser=${browser}
-    Maximize Browser Window
-
-Suite Teardown
-    Close Browser
+# robot  --pythonpath Libraries/Src --noncritical failure-expected -d Results/ Tests/DjangoAdminSiteProject/DjangoAdminSiteTestSuite/DjangoAdminSiteTestSuite.robot
 
 *** Test Cases ***
 Login As An Admin
