@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 expected = {
     'admin_login_page': {
         'title_text': 'Django administration',
