@@ -1,3 +1,4 @@
+venv/
 .idea/
 Libraries/Src/Credentials.py
 Libraries/Src/__pycache__
