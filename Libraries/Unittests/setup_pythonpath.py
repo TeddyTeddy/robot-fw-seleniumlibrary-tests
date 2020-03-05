@@ -5,7 +5,7 @@ import re
 if __name__ == '__main__':
     current_abs_path = os.path.abspath(os.getcwd())     # gets the current abs path to this py file
     sep = os.path.sep  # get os specific path seperator (either '\' for Windows or '/' for linux)
-    pattern = f'(.+){sep}Unittests'
+    pattern = f'(.+)\{sep}Unittests'
     # grabs everything from current_abs_path except '/UnitTests' string
     m = re.match(pattern, current_abs_path)
     src_abs_path = f'{m.groups()[0]}{sep}Src{sep}'               # forms src_abs_path from the grabbed string
