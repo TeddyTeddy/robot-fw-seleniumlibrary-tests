@@ -2,7 +2,7 @@ from LibraryLoader import LibraryLoader
 from ExpectedTexts import expected
 from ExpectedLinks import links, expected_groups_page_url, base_link
 from Locators import locator
-
+import re
 
 class ConfirmGroupsDeletionsPage:
     """
@@ -76,10 +76,9 @@ class ConfirmGroupsDeletionsPage:
         # the group to be deleted shows as an item under locator['confirm_groups_deletions_page']['objects']
         group_locator = locator['confirm_groups_deletions_page']['generic_group_element'] % group_name
         group_link = self._loader.sl.get_element_attribute(locator=group_locator, attribute='href')
-        # TODO: Do the below checks more efficiently with RegEx check when txt2re.com is up again
-        assert base_link in group_link
-        assert '/admin/auth/group/' in group_link
-        assert '/change/' in group_link
+        # group link e.g:   https://glacial-earth-31542.herokuapp.com/admin/auth/group/168/change/
+        match = re.search(links['confirm_groups_deletions_page']['group_to_be_deleted_link'], group_link)
+        assert bool(match)
 
         # cancel_deletion_button
         observed_cancel_deletion_button_link = self._loader.sl.get_element_attribute(

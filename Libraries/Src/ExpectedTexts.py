@@ -69,7 +69,6 @@ expected = {
         'authentication_and_authorization_link_text': 'Authentication and Authorization',
         'group_x_added_successfully_text': 'The group "%s" was added successfully.',
         'select_group_to_change_text': 'Select group to change',
-        'search_button_text': 'Search',
         'action_text': 'Action:\n---------\nDelete selected groups',
         'delete_selected_groups_option_text': 'Delete selected groups',
         'go_button_text': 'Go',

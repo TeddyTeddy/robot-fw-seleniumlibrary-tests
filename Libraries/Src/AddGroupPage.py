@@ -177,11 +177,11 @@ class AddGroupPage:
         """
         # create a list of all the permissions listed inside available_permissions_dropdown
         filtered_permission_elements = self._loader.sl.get_webelements(locator=locator['add_group_page']['generic_filtered_permission'])
-        permission_list = []
+        filtered_permissions = []
         for element in filtered_permission_elements:
             permission = self._loader.sl.get_text(element)
-            permission_list.append(permission)
-        logger.info(permission_list)
+            filtered_permissions.append(permission)
+        logger.info(filtered_permissions)
 
         # then select each and every element in filtered_permission_elements by pressing CTRL key and clicking on them
         for element in filtered_permission_elements:
@@ -190,12 +190,12 @@ class AddGroupPage:
         # Then it clicks on choose_all_permissions_option
         self._loader.sl.click_link(locator=locator['add_group_page']['choose_all_permissions_option'])
         # It then verifies that the permissions are added inside chosen_permissions_dropdown.
-        self._verify_permissions_added(permission_list)
+        self._verify_permissions_added(filtered_permissions)
 
-    def _verify_permissions_added(self, permission_list):  # use set operations like set1.contains(set2)
+    def _verify_permissions_added(self, filtered_permissions):  # use set operations like set1.contains(set2)
         """
-        Verifies that permission_list is found under chosen_permissions_dropdown. Fails with assert otherwise.
-        :param permission_list: a list of filtered & chosen permissions to be verified to be added inside
+        Verifies that filtered_permissions is found under chosen_permissions_dropdown. Fails with assert otherwise.
+        :param filtered_permissions: a list of filtered & chosen permissions to be verified to be added inside
         chosen_permissions_dropdown as generic_chosen_permission
         :return:
         """
@@ -205,12 +205,13 @@ class AddGroupPage:
         for element in chosen_permission_elements:
             permission = self._loader.sl.get_text(element)
             chosen_permissions.append(permission)
-        chosen_permissions_set = set(chosen_permissions)
-        permission_list_set = set(permission_list)
-        logger.info(chosen_permissions_set)
-        logger.info(permission_list_set)
-        # TODO: sorted(chosen_permissions) == sorted(permission_list) does not work. Why?
-        assert chosen_permissions_set.issuperset(permission_list_set)
+        chosen_permissions = set(chosen_permissions)
+        filtered_permissions = set(filtered_permissions)
+        logger.info(chosen_permissions)
+        logger.info(filtered_permissions)
+        # NOTE: sorted(chosen_permissions) == sorted(filtered_permissions) does not work. 
+        # Why? because chosen_permissions is a larger set
+        assert chosen_permissions.issuperset(filtered_permissions)
 
     def clear_available_permissions_filter(self):
         self._loader.sl.clear_element_text(locator=locator['add_group_page']['input_permission_field'])

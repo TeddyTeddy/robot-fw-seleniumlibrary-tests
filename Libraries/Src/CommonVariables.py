@@ -21,6 +21,8 @@ def get_variables():
         },
         'BLOG_EDITORS_PERMISSIONS': BLOG_EDITORS_PERMISSIONS,
         'GROUP_EDITORS_PERMISSIONS': GROUP_EDITORS_PERMISSIONS,
+        'BLOG_EDITORS_GROUP_NAME': 'blog_editors',
+        'GROUP_EDITORS_GROUP_NAME': 'group_editors'
     }
     return variables
 

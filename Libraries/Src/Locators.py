@@ -53,7 +53,7 @@ locator = {
         'input_permission_field': '//*[@id="id_permissions_input"]',
         'available_permissions_tooltip': '//*[@id="group_form"]/div/fieldset/div[2]/div/div[1]/div/div[1]/h2/span',
         'available_permissions_dropdown': '//*[@id="id_permissions_from"]',
-        'generic_filtered_permission': '// *[ @ id = "id_permissions_from"] / option',
+        'generic_filtered_permission': '//*[@id="id_permissions_from"]/option',
         'choose_all_permissions_option': '//*[@id="id_permissions_add_all_link"]',
         'choose_all_permissions': '//*[@id="id_permissions_add_all_link"]',
         'help_to_select_multiple_permissions': '//*[@id="group_form"]/div/fieldset/div[2]/div/div[2]',
@@ -80,7 +80,7 @@ locator = {
         'x_of_y_selected': '//*[@id="changelist-form"]/div[1]/span',
         'select_all_groups': '//*[@id="result_list"]/thead/tr/th[2]/div[1]/span',
         'generic_group_element_checkbox': '//*[@id="result_list"]/tbody/tr[contains(.,"%s")]/td/input[@type="checkbox"]',
-        'generic_group_element': '//*[@id="result_list"]/tbody/tr/th/a[contains(.,"%s")]',
+        'generic_group_element': '//table[@id="result_list"]/tbody/tr/th/a[contains(.,"%s")]',
         'y_groups': '//*[@id="changelist-form"]/p',
     },
     'confirm_groups_deletions_page': {

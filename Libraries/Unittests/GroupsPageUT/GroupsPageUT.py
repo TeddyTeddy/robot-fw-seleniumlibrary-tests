@@ -6,7 +6,7 @@ from Locators import locator
 from GroupsPage import GroupsPage     # class under test (CUT)
 from ExpectedLinks import links, expected_groups_page_url, base_link
 from ExpectedTexts import expected
-
+from ExpectedAttributeValues import eav
 
 class GroupsPageUT(unittest.TestCase):
     def setUp(self) -> None:  # before running an individual test case
@@ -56,7 +56,7 @@ class GroupsPageUT(unittest.TestCase):
         expect(LibraryLoader.get_instance().sl).element_attribute_value_should_be(
             locator=locator['groups_page']['search_button'],
             attribute='value',
-            expected=expected['groups_page']['search_button_text']
+            expected=eav['groups_page']['search_button_value']
         ).thenReturn(None)
 
         expect(LibraryLoader.get_instance().sl).element_text_should_be(

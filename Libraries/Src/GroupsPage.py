@@ -1,5 +1,6 @@
 from LibraryLoader import LibraryLoader
 from ExpectedTexts import expected
+from ExpectedAttributeValues import eav
 from ExpectedLinks import links, expected_groups_page_url, base_link
 from Locators import locator
 from robot.api import logger
@@ -45,7 +46,7 @@ class GroupsPage:
         self._loader.sl.element_attribute_value_should_be(
             locator=locator['groups_page']['search_button'],
             attribute='value',
-            expected=expected['groups_page']['search_button_text'])
+            expected=eav['groups_page']['search_button_value'])
 
         self._loader.sl.element_text_should_be(locator=locator['groups_page']['action'],
                                                expected=expected['groups_page']['action_text'])
@@ -75,7 +76,7 @@ class GroupsPage:
         """
         observed_x_of_y_selected = self._loader.sl.get_text(locator=locator['groups_page']['x_of_y_selected'])
         observed_y_groups = self._loader.sl.get_text(locator=locator['groups_page']['y_groups'])
-        y = re.match('\\d+', observed_y_groups).group()
+        y = re.match(r'\d+', observed_y_groups).group(0)
         logger.info(f'Observed {y} groups')
         assert y in observed_x_of_y_selected
 
@@ -103,17 +104,17 @@ class GroupsPage:
         :param group_name: the name of the group added to the group page (i.e. 'blog_editors')
         :return: None
         """
-        locator_formatter = locator['groups_page']['generic_group_element'] % group_name
-        group_link = self._loader.sl.get_element_attribute(locator=locator_formatter, attribute='href')
-        # TODO: Do the below checks more efficiently with RegEx check when txt2re.com is up again
-        assert base_link in group_link
-        assert '/admin/auth/group/' in group_link
-        assert '/change/' in group_link
+        added_group_locator = locator['groups_page']['generic_group_element'] % group_name
+        group_link = self._loader.sl.get_element_attribute(locator=added_group_locator, attribute='href')
+        # group link e.g:   https://glacial-earth-31542.herokuapp.com/admin/auth/group/168/change/
+        match = re.search(links['groups_page']['added_group_link'], group_link)
+        assert bool(match)
+
 
     def verify_group_added(self, group_name):
         # https://stackoverflow.com/questions/4302166/format-string-dynamically
-        locator_formatter = locator['groups_page']['generic_group_element'] % group_name
-        self._loader.sl.element_text_should_be(locator=locator_formatter,
+        added_group_locator = locator['groups_page']['generic_group_element'] % group_name
+        self._loader.sl.element_text_should_be(locator=added_group_locator,
                                                expected=group_name)
 
     def select_checkbox_for_group(self, group_name):

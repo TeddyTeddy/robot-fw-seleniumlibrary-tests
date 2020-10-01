@@ -1,3 +1,4 @@
+import re
 base_link = 'https://glacial-earth-31542.herokuapp.com/'
 
 admin_login_page_url = f'{base_link}admin/login/?next=/admin/'
@@ -36,11 +37,14 @@ links = {
         'home_link': f'{base_link}admin/',
         'authentication_and_authorization_link': f'{base_link}admin/auth/',
         'add_group_link': f'{base_link}admin/auth/group/add/',
+        # https://glacial-earth-31542.herokuapp.com/admin/auth/group/168/change/
+        'added_group_link': re.escape(f'{base_link}admin/auth/group/') + '(?:\d+)' + re.escape("/change")
     },
     'confirm_groups_deletions_page': {
         'home_link': f'{base_link}admin/',
         'authentication_and_authorization_link': f'{base_link}admin/auth/',
         'groups_link': f'{base_link}admin/auth/group/',
         'cancel_deletion_button_link': f'{base_link}admin/auth/group/#',
+        'group_to_be_deleted_link': re.escape(f'{base_link}admin/auth/group/') + '(?:\d+)' + re.escape("/change")
     }
 }

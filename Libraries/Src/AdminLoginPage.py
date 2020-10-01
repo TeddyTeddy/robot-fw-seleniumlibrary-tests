@@ -42,10 +42,7 @@ class AdminLoginPage:
     def login(self, username, password):
         """
         Logins as admin user via admin login page. If the login attempt is successful, user is redirected to
-        admin main page. This test checks the success of the login attempt by waiting for 'logout' element
-        in the main page. If the element is enabled, then the url of of the redirected page is checked against
-        expected_admin_main_page_url. Then the test verifies all the texts and the links on the admin main page
-        :return: None
+        admin main page.
         """
         self._loader.sl.input_text(locator=locator['admin_login_page']['username_field'],
                                    text=username)
