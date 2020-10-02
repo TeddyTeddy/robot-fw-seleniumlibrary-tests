@@ -209,7 +209,7 @@ class AddGroupPage:
         filtered_permissions = set(filtered_permissions)
         logger.info(chosen_permissions)
         logger.info(filtered_permissions)
-        # NOTE: sorted(chosen_permissions) == sorted(filtered_permissions) does not work. 
+        # NOTE: sorted(chosen_permissions) == sorted(filtered_permissions) does not work.
         # Why? because chosen_permissions is a larger set
         assert chosen_permissions.issuperset(filtered_permissions)
 

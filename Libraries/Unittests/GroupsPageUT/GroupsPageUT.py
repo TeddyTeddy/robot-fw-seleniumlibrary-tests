@@ -98,7 +98,8 @@ class GroupsPageUT(unittest.TestCase):
         ).thenReturn(None)
 
         # configure mock calls _in_verify_dynamic_link_for_group_name(group_name)
-        url = f'{base_link}/admin/auth/group/23/change/'
+        # https://glacial-earth-31542.herokuapp.com/admin/auth/group/79/change/
+        url = f'{base_link}admin/auth/group/23/change/'
         locator_formatter = locator['groups_page']['generic_group_element'] % group_name
         expect(LibraryLoader.get_instance().sl).get_element_attribute(
             locator=locator_formatter,
@@ -190,7 +191,7 @@ class GroupsPageUT(unittest.TestCase):
         verifyNoUnwantedInteractions()
 
     def test_press_go(self):
-        # configure the mock selenium library for select_delete_selected_groups_dropdown()'s calls
+        # configure the mock selenium library
         expect(LibraryLoader.get_instance().sl).click_element(
             locator=locator['groups_page']['go_button']
         ).thenReturn(None)

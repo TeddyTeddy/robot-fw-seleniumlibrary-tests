@@ -94,7 +94,7 @@ class AddGroupPageUT(unittest.TestCase):
             locator=locator['add_group_page']['remove_all_permissions_option'],
             expected=expected['add_group_page']['remove_all_permissions_text']
         ).thenReturn(None)
-        
+
         # configure mock calls in _verify_links_on_add_group_page()
         expect(LibraryLoader.get_instance().sl).element_attribute_value_should_be(
             locator=locator['add_group_page']['home_link'],
@@ -119,7 +119,7 @@ class AddGroupPageUT(unittest.TestCase):
             attribute='href',
             expected=links['add_group_page']['choose_all_permissions_link']
         ).thenReturn(None)
-        
+
         # configure_mock_calls_in _verify_the_buttons_on_add_group_page()
         expect(LibraryLoader.get_instance().sl).element_attribute_value_should_be(
             locator=locator['add_group_page']['save_and_add_another_button'],
@@ -314,8 +314,8 @@ class AddGroupPageUT(unittest.TestCase):
     @staticmethod
     def do_get_text_for_available_permissions_dropdown(permission_search_term):
         if permission_search_term == 'blog':
-            return expected['add_group_page']['postings-blog post-can_add_blog_post'] + ' ' + \
-                   expected['add_group_page']['postings-blog post-can_add_blog_post'] + ' ' + \
+            return expected['add_group_page']['postings-blog post-can_add_blog_post'] + '\n' + \
+                   expected['add_group_page']['postings-blog post-can_add_blog_post'] + '\n' + \
                    expected['add_group_page']['postings-blog post-can_add_blog_post']
         elif permission_search_term == 'yielding no permissions':
             return ''

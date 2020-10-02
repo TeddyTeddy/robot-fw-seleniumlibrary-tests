@@ -11,11 +11,11 @@ from ExpectedTexts import expected
 
 
 class AdminLoginPageUT(unittest.TestCase):
-    
+
     def __init__(self, *args, **kwargs):
         super(AdminLoginPageUT, self).__init__(*args, **kwargs)
         self.credentials = get_variables()['CREDENTIALS']
-        
+
     def setUp(self) -> None:  # before running an individual test case
         # instantiate a mock LibraryLoader, which returns a mock sl
         LibraryLoaderStub.configure_mock_library_loader()

@@ -18,7 +18,7 @@ class ConfirmGroupsDeletionsPageUT(unittest.TestCase):
 
     @staticmethod
     def do_test_verify_confirm_group_deletions_page(group_name):
-        
+
         expect(LibraryLoader.get_instance().sl).wait_until_element_is_enabled(
             locator=locator['confirm_groups_deletions_page']['are_you_sure_headline']
         ).thenReturn(None)
@@ -88,7 +88,8 @@ class ConfirmGroupsDeletionsPageUT(unittest.TestCase):
         ).thenReturn(None)
 
         # the group to be deleted shows as an item under locator['confirm_groups_deletions_page']['objects']
-        url = f'{base_link}/admin/auth/group/23/change/'
+        # https://glacial-earth-31542.herokuapp.com/admin/auth/group/79/change/
+        url = f'{base_link}admin/auth/group/23/change/'
         group_locator = locator['confirm_groups_deletions_page']['generic_group_element'] % group_name
         expect(LibraryLoader.get_instance().sl).get_element_attribute(
             locator=group_locator, attribute='href'
