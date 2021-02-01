@@ -1,11 +1,6 @@
-Package                        Version
------------------------------- -------
-mockito                        1.2.2
-pip                            21.0.1
-robotframework                 3.2.2
-robotframework-pythonlibcore   2.1.0
-robotframework-seleniumlibrary 4.5.0
-selenium                       3.141.0
-setuptools                     45.2.0
-urllib3                        1.25.8
-wheel                          0.34.2
+mockito==1.2.2
+robotframework==3.2.2
+robotframework-pythonlibcore==2.1.0
+robotframework-seleniumlibrary==4.5.0
+selenium==3.141.0
+urllib3==1.25.8
